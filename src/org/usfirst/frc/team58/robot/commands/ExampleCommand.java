@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team58.robot.Robot;
 
 
-public class Drive extends Command {	
+public class ExampleCommand extends Command {	
 	
-	public Drive() {
+	public ExampleCommand() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_DriveTrain);
 	}
