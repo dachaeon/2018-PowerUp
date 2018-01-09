@@ -7,6 +7,11 @@
 
 package org.usfirst.frc.team58.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
+import org.usfirst.frc.team58.robot.commands.*;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -39,4 +44,8 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+	
+	// Create joysticks driver and operator. Added by Tyler 01/08/18
+	public Joystick driver = new Joystick(RobotMap.driver);
+	public Joystick operator = new Joystick(RobotMap.operator);
 }
