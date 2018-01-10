@@ -1,3 +1,5 @@
+// Created by Tyler on 01/10/18.
+
 package org.usfirst.frc.team58.robot;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import edu.wpi.first.wpilibj.command.*;
@@ -13,8 +15,9 @@ public class Dashboard {
 	static SendableChooser<Command> autoChooser;
 	
 	// Preferences variables to be edited in the SmartDashboard. - Tyler 01/10/18
-	// public static double elevatorSpeed; <-- Stuff like this
+	// public static double elevatorSpeed; 
 	
+	// Start the dashboard, add preferences and the autonomous mode chooser. - Tyler 01/10/18
 	public static void initDashboard() {
 		addPreferences();
 		addAutoChooser();
@@ -40,6 +43,7 @@ public class Dashboard {
 		
 	}
 	
+	// Get the autonomous program from the chooser on the Smart Dashboard. - Tyler 01/10/18
 	public static Command getAutoProgram() {
 		autoCommand = autoChooser.getSelected();
 		return autoCommand;

@@ -26,11 +26,11 @@ public class RobotMap {
 	public static int driver = 0;
 	public static int operator = 1;
 	
-	// buttons on driver joystick
+	// Buttons on driver joystick
 	public static int moveAxis = 1;
 	public static int boostAxis = 3;
 	public static int turnAxis = 4;
-	// buttons on operator joystick
+	// Buttons on operator joystick
 	public static int a = 1;
 	public static int b = 2;
 	public static int x = 3;
