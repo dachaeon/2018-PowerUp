@@ -48,4 +48,20 @@ public class OI {
 	// Create joysticks driver and operator. Added by Tyler 01/08/18
 	public Joystick driver = new Joystick(RobotMap.driver);
 	public Joystick operator = new Joystick(RobotMap.operator);
+
+	// Mapping buttons for Elevator. Added by Emma/Joe 01/13/18
+	public JoystickButton ScaleHeight = new JoystickButton (operator, RobotMap.y);
+	public JoystickButton SwitchHeight = new JoystickButton (operator, RobotMap.b);
+	public JoystickButton ExchangeHeight = new JoystickButton (operator, RobotMap.x);
+	public JoystickButton RestHeight = new JoystickButton (operator, RobotMap.a);
+	
+	public OI() {
+		ScaleHeight.whenPressed(new PIDElevate(Dashboard.ScaleHeight));
+		SwitchHeight.whenPressed(new PIDElevate(Dashboard.SwitchHeight));
+		ExchangeHeight.whenPressed(new PIDElevate(Dashboard.ExchangeHeight));
+		RestHeight.whenPressed(new PIDElevate(Dashboard.RestHeight));
+		
+	}
+	
 }
+
