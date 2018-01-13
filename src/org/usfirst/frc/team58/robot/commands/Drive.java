@@ -4,6 +4,7 @@ package org.usfirst.frc.team58.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team58.robot.Robot;
+import org.usfirst.frc.team58.robot.RobotMap;
 
 
 public class Drive extends Command {	
@@ -21,6 +22,37 @@ public class Drive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		// Collect values from Driver control
+		double moveValue = Robot.m_oi.driver.getRawAxis(RobotMap.moveAxis);
+		double turnValue = Robot.m_oi.driver.getRawAxis(RobotMap.turnAxis);
+		double boostValue = Robot.m_oi.driver.getRawAxis(RobotMap.boostAxis);
+		boolean boostOn = false;
+		
+		// Set moveValue to 100% if moveAxis is 90% or more
+		if (moveValue > 0.9) {
+			moveValue = 1;
+		}
+		if (moveValue < -0.9) {
+			moveValue = -1;
+		}
+		
+		// Deadbands for driving controllers
+		if ((moveValue <= 0.2) && (moveValue >= -0.2)) {
+			moveValue = 0;
+		}
+		
+		if ((turnValue <= 0.2) && (turnValue >= -0.2)){
+			turnValue = 0;
+		}
+		
+		// Determine if Boost should be on
+		if (boostValue >= 0.75) {
+			boostOn = true;
+		}
+		
+		// Send values to Drive Train subsystem
+		Robot.m_DriveTrain.drive(moveValue, turnValue);
+		Robot.m_DriveTrain.boost(boostOn);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
