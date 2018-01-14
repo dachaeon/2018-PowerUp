@@ -35,5 +35,9 @@ public class RobotMap {
 	public static int b = 2;
 	public static int x = 3;
 	public static int y = 4;
-
+	public static int elevateAxis = 5;
+	public static int turnCubeAxis = 0;
+	public static int grabAxis = 1;
+	public static int releaseAxis = 2;
+	
 }

@@ -30,6 +30,8 @@ public class Robot extends TimedRobot {
 			= new DriveTrain();
 	public static final Elevator m_Elevator
 			= new Elevator();
+	public static final Grabber m_Grabber
+			= new Grabber();
 	public static OI m_oi;
 	public static String gameData;
 
