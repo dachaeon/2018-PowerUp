@@ -16,6 +16,10 @@ public class Dashboard {
 	
 	// Preferences variables to be edited in the SmartDashboard. - Tyler 01/10/18
 	// public static double elevatorSpeed; 
+	public static double ScaleHeight;
+	public static double SwitchHeight;
+	public static double ExchangeHeight;
+	public static double RestHeight = 0;
 	
 	// Start the dashboard, add preferences and the autonomous mode chooser. - Tyler 01/10/18
 	public static void initDashboard() {

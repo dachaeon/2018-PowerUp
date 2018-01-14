@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team58.robot.commands.ExampleCommand;
+import org.usfirst.frc.team58.robot.commands.PIDElevate;
 import org.usfirst.frc.team58.robot.subsystems.*;
 
 /**
@@ -27,6 +27,8 @@ import org.usfirst.frc.team58.robot.subsystems.*;
 public class Robot extends TimedRobot {
 	public static final DriveTrain m_DriveTrain
 			= new DriveTrain();
+	public static final Elevator m_Elevator
+			= new Elevator();
 	public static OI m_oi;
 	public static String gameData;
 
