@@ -48,5 +48,9 @@ public class Elevator extends Subsystem {
 	public void PIDControl (double height) {
 		m_ElevatorMotor.set(ControlMode.MotionMagic, height);
 	}
+	
+	public void returnToVariableControl () {
+		m_ElevatorMotor.set(ControlMode.PercentOutput, 0);
+	}
 }
 

@@ -49,6 +49,13 @@ public class Grabber extends Subsystem {
 		m_RightMotor.set (moveValue);
 		m_LeftMotor.set (moveValue);
 	}
+	
+	public void turnCube (double turnSpeed) {
+		// Passing in 1 will turn cube right
+		// Passing in -1 will turn cube left
+		m_LeftMotor.set(turnSpeed);
+		m_RightMotor.set(-turnSpeed);
+	}
 
 }
 

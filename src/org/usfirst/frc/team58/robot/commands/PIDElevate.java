@@ -29,7 +29,7 @@ public class PIDElevate extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
-	protected boolean isFinished() {
+	protected boolean isFinished() { // Add code to determine if PID loop is finished
 		return false;
 	}
 
@@ -37,7 +37,7 @@ public class PIDElevate extends Command {
 	@Override
 	protected void end() {
 		// Return to variable control mode
-		
+		Robot.m_Elevator.returnToVariableControl();
 	}
 
 	// Called when another command which requires one or more of the same
@@ -45,6 +45,6 @@ public class PIDElevate extends Command {
 	@Override
 	protected void interrupted() {
 		// Return to variable control mode
-		
+		Robot.m_Elevator.returnToVariableControl();
 	}
 }

@@ -25,6 +25,7 @@ public class Grab extends Command {
 	protected void execute() {
 		// get values from controller
 		double moveValue = Robot.m_oi.operator.getRawAxis(RobotMap.grabAxis);
+		double turnCubeValue = Robot.m_oi.operator.getRawAxis(RobotMap.turnCubeAxis);
 		double releaseValue = Robot.m_oi.operator.getRawAxis(RobotMap.releaseAxis);
 		boolean releaseActivate = false;
 		
@@ -41,13 +42,27 @@ public class Grab extends Command {
 			moveValue = 0;
 		}
 		
+		// Determine if cube should be spun
+		if ((turnCubeValue > 0.8) || (turnCubeValue < -0.8)) {
+			moveValue = 0;
+			// not going to use grab wheels and turn cube instead
+		} else {
+			// Not turning cube
+			turnCubeValue = 0;
+		}
+		
 		// determine if grabber should be open
 		if (releaseValue > 0.75) {
 			releaseActivate = true;
 		}
 		
 		// send values to subsystem
-		Robot.m_Grabber.grabWheels(moveValue);
+		if (turnCubeValue == 0) {
+			Robot.m_Grabber.grabWheels(moveValue);
+		} else {
+			Robot.m_Grabber.turnCube(turnCubeValue);
+		}
+		// this runs independent of grab wheels / turn cube
 		Robot.m_Grabber.release(releaseActivate);
 	}
 
