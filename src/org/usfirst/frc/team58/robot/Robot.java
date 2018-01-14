@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -42,7 +43,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
+		// Start the SmartDashboard. - Tyler 01/13/18
 		Dashboard.initDashboard();
+		// This line creates a USB camera (integer 0) and starts streaming to the SmartDashboard.
+		// We can create more with different integers as needed. - Tyler 01/13/18
+		CameraServer.getInstance().startAutomaticCapture();
+		
 	}
 
 	/**
