@@ -26,10 +26,10 @@ public class DriveTrain extends Subsystem {
 	
 	public DriveTrain() {
 		// Create motor instances
-		m_FrontRightMotor = new WPI_TalonSRX(3); //numbers to be added once we know what is on CANbus - Tyler
+		m_FrontRightMotor = new WPI_TalonSRX(2); //numbers to be added once we know what is on CANbus - Tyler
 		m_FrontLeftMotor = new WPI_TalonSRX(4);
-		m_RightSlave = new WPI_VictorSPX(5);
-		m_LeftSlave = new WPI_VictorSPX(6);
+		m_RightSlave = new WPI_VictorSPX(3);
+		m_LeftSlave = new WPI_VictorSPX(5);
 		m_SpeedSolenoid = new Solenoid(1);
 		
 		// Config Victors to follow Talons
@@ -40,8 +40,8 @@ public class DriveTrain extends Subsystem {
 		m_drive = new DifferentialDrive(m_FrontRightMotor, m_FrontLeftMotor);
 		
 		// Add encoders
-		m_FrontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
-		m_FrontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		//m_FrontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		// m_FrontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		
 	}
 
