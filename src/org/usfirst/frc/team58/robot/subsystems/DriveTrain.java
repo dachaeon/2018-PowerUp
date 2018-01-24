@@ -54,7 +54,7 @@ public class DriveTrain extends Subsystem {
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		setDefaultCommand(new Drive());
+		//setDefaultCommand(new Drive());
 		
 	}
 	
@@ -62,15 +62,20 @@ public class DriveTrain extends Subsystem {
 		m_drive.arcadeDrive(moveValue, rotateValue);
 		
 		// output data for phase check (only use when setting up)
-		SmartDashboard.putNumber("right drive position", m_FrontRightMotor.getSelectedSensorPosition(0));
-		SmartDashboard.putNumber("right drive velocity", m_FrontRightMotor.getSelectedSensorVelocity(0));
-		SmartDashboard.putNumber("left drive position", m_FrontLeftMotor.getSelectedSensorPosition(0));
-		SmartDashboard.putNumber("left drive velocity", m_FrontLeftMotor.getSelectedSensorVelocity(0));
+		//SmartDashboard.putNumber("right drive position", m_FrontRightMotor.getSelectedSensorPosition(0));
+		//SmartDashboard.putNumber("right drive velocity", m_FrontRightMotor.getSelectedSensorVelocity(0));
+		//SmartDashboard.putNumber("left drive position", m_FrontLeftMotor.getSelectedSensorPosition(0));
+		//SmartDashboard.putNumber("left drive velocity", m_FrontLeftMotor.getSelectedSensorVelocity(0));
 		
 	}
 	 
 	public void boost (boolean boostOn) {
 		m_SpeedSolenoid.set (boostOn);
+	}
+	
+	public void enablePID(int distance) {
+		
+	
 	}
 	
 	

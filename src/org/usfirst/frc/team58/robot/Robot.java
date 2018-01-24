@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team58.robot.commands.Drive;
 import org.usfirst.frc.team58.robot.subsystems.*;
 
 /**
@@ -98,6 +100,9 @@ public class Robot extends TimedRobot {
 		//if (autoCommand != null) {
 			//autoCommand.cancel();
 		//}
+		
+		// start 
+		new Drive();
 	}
 
 	/**
