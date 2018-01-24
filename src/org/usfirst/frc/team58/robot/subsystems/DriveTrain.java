@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain extends Subsystem {
 	// Put methods for controlling this subsystem
@@ -40,8 +41,14 @@ public class DriveTrain extends Subsystem {
 		m_drive = new DifferentialDrive(m_FrontRightMotor, m_FrontLeftMotor);
 		
 		// Add encoders
-		//m_FrontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
-		// m_FrontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		m_FrontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		m_FrontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		m_FrontRightMotor.setSensorPhase(false);
+		m_FrontLeftMotor.setSensorPhase(true);
+		
+
+
+		
 		
 	}
 
@@ -53,6 +60,12 @@ public class DriveTrain extends Subsystem {
 	
 	public void drive (double moveValue, double rotateValue) {
 		m_drive.arcadeDrive(moveValue, rotateValue);
+		
+		// output data for phase check (only use when setting up)
+		SmartDashboard.putNumber("right drive position", m_FrontRightMotor.getSelectedSensorPosition(0));
+		SmartDashboard.putNumber("right drive velocity", m_FrontRightMotor.getSelectedSensorVelocity(0));
+		SmartDashboard.putNumber("left drive position", m_FrontLeftMotor.getSelectedSensorPosition(0));
+		SmartDashboard.putNumber("left drive velocity", m_FrontLeftMotor.getSelectedSensorVelocity(0));
 		
 	}
 	 
