@@ -6,16 +6,21 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team58.robot.Robot;
 
 
-public class ExampleCommand extends Command {	
+public class DriveRotations extends Command {	
+	int r;
 	
-	public ExampleCommand() {
+	public DriveRotations(int r) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_DriveTrain);
+		this.r = r;
+		Robot.m_DriveTrain.enablePID(r);
+		System.out.println("hello");
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		
 	}
 
 	// Called repeatedly when this Command is scheduled to run

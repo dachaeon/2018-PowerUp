@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team58.robot.commands.Drive;
+import org.usfirst.frc.team58.robot.commands.DriveRotations;
 import org.usfirst.frc.team58.robot.subsystems.*;
 
 /**
@@ -80,6 +81,9 @@ public class Robot extends TimedRobot {
 		//if (autoCommand != null) {
 		//	autoCommand.start();
 	//	}
+		
+		new DriveRotations(5);
+		System.out.println("hi");
 	}
 
 	/**
@@ -102,6 +106,7 @@ public class Robot extends TimedRobot {
 		//}
 		
 		// start 
+		m_DriveTrain.initiateDiffDrive();
 		new Drive();
 	}
 

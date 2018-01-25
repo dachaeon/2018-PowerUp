@@ -4,6 +4,7 @@ package org.usfirst.frc.team58.robot.subsystems;
 
 import org.usfirst.frc.team58.robot.commands.Drive;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.*;
 
@@ -37,18 +38,20 @@ public class DriveTrain extends Subsystem {
 		m_RightSlave.follow(m_FrontRightMotor);
 		m_LeftSlave.follow(m_FrontLeftMotor);
 		
-		// Create drive object	
-		m_drive = new DifferentialDrive(m_FrontRightMotor, m_FrontLeftMotor);
+		
 		
 		// Add encoders
 		m_FrontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		m_FrontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		m_FrontRightMotor.setSensorPhase(false);
+		m_FrontRightMotor.setInverted(true);
 		m_FrontLeftMotor.setSensorPhase(true);
 		
 
-
-		
+		//set PID
+		config(); // tells motor controllers what nominal and max signals are
+		setPID(.1, 0, 0); // first random guess
+		setCruiseVA(1000, 6000); //first random guess
 		
 	}
 
@@ -74,10 +77,57 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void enablePID(int distance) {
+		zeroEncoders();
+		int nativeDist = distance*4096; // converts ROTATIONS to encoder ticks
 		
-	
+		m_FrontLeftMotor.set(ControlMode.MotionMagic, nativeDist);
+		System.out.println("left done");
+		
+		m_FrontRightMotor.set(ControlMode.MotionMagic, nativeDist);
+		
+		System.out.println(nativeDist);
 	}
 	
+	private void setPID(double p, double i, double d) {
+		m_FrontLeftMotor.selectProfileSlot(0, 0);
+		m_FrontRightMotor.selectProfileSlot(0, 0);
+		m_FrontLeftMotor.config_kP(0, p, 10);
+		m_FrontRightMotor.config_kP(0, p, 10);
+		m_FrontLeftMotor.config_kI(0, i, 10);
+		m_FrontRightMotor.config_kI(0, i, 10);
+		m_FrontLeftMotor.config_kD(0, d, 10);
+		m_FrontRightMotor.config_kD(0, d, 10);
+	}
+	
+	private void setCruiseVA(int v, int a) {
+		m_FrontLeftMotor.configMotionCruiseVelocity(v, 10);
+		m_FrontRightMotor.configMotionCruiseVelocity(v, 10);
+		m_FrontLeftMotor.configMotionAcceleration(a, 10);
+		m_FrontRightMotor.configMotionAcceleration(a, 10);
+		
+	}
+	
+	private void zeroEncoders() {
+		m_FrontLeftMotor.setSelectedSensorPosition(0,0,10);
+		m_FrontRightMotor.setSelectedSensorPosition(0,0,10);
+	}
+	
+	private void config() {
+		m_FrontLeftMotor.configNominalOutputForward(0, 10);
+		m_FrontLeftMotor.configNominalOutputReverse(0, 10);
+		m_FrontLeftMotor.configPeakOutputForward(1, 10);
+		m_FrontLeftMotor.configPeakOutputReverse(-1, 10);
+		
+		m_FrontRightMotor.configNominalOutputForward(0, 10);
+		m_FrontRightMotor.configNominalOutputReverse(0, 10);
+		m_FrontRightMotor.configPeakOutputForward(1, 10);
+		m_FrontRightMotor.configPeakOutputReverse(-1, 10);
+	}
+	
+	public void initiateDiffDrive() {
+		// Create drive object	
+		m_drive = new DifferentialDrive(m_FrontRightMotor, m_FrontLeftMotor);
+	}
 	
 }
 
