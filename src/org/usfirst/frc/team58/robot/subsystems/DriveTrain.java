@@ -3,6 +3,9 @@
 package org.usfirst.frc.team58.robot.subsystems;
 
 import org.usfirst.frc.team58.robot.commands.Drive;
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SPI;
+
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -24,9 +27,13 @@ public class DriveTrain extends Subsystem {
 	private WPI_VictorSPX m_LeftSlave;
 	private DifferentialDrive m_drive;
 	private Solenoid m_SpeedSolenoid;
-	
+	private AHRS navx;
+	boolean PIDEnabled;
 	
 	public DriveTrain() {
+		// not using PID at start;
+		PIDEnabled = false;
+		
 		// Create motor instances
 		m_FrontRightMotor = new WPI_TalonSRX(2); //numbers to be added once we know what is on CANbus - Tyler
 		m_FrontLeftMotor = new WPI_TalonSRX(4);
@@ -38,37 +45,39 @@ public class DriveTrain extends Subsystem {
 		m_RightSlave.follow(m_FrontRightMotor);
 		m_LeftSlave.follow(m_FrontLeftMotor);
 		
-		
-		
 		// Add encoders
 		m_FrontRightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		m_FrontLeftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		m_FrontRightMotor.setSensorPhase(false);
-		m_FrontRightMotor.setInverted(true);
 		m_FrontLeftMotor.setSensorPhase(true);
+		
+		// Create drive object	
+		m_drive = new DifferentialDrive(m_FrontRightMotor, m_FrontLeftMotor);
 		
 
 		//set PID
 		config(); // tells motor controllers what nominal and max signals are
-		setPID(.1, 0, 0); // first random guess
-		setCruiseVA(1000, 6000); //first random guess
+
+		// add navx
+		navx = new AHRS(SPI.Port.kMXP);
 		
 	}
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		//setDefaultCommand(new Drive());
+		setDefaultCommand(new Drive());
 		
 	}
 	
-	public void drive (double moveValue, double rotateValue) {
-		m_drive.arcadeDrive(moveValue, rotateValue);
-		
+	public void drive (double moveValue, double rotateValue, boolean usesPID) {
+		if (PIDEnabled == usesPID) {
+			m_drive.arcadeDrive(moveValue, rotateValue);
+		}
 		// output data for phase check (only use when setting up)
-		//SmartDashboard.putNumber("right drive position", m_FrontRightMotor.getSelectedSensorPosition(0));
-		//SmartDashboard.putNumber("right drive velocity", m_FrontRightMotor.getSelectedSensorVelocity(0));
-		//SmartDashboard.putNumber("left drive position", m_FrontLeftMotor.getSelectedSensorPosition(0));
-		//SmartDashboard.putNumber("left drive velocity", m_FrontLeftMotor.getSelectedSensorVelocity(0));
+		SmartDashboard.putNumber("right drive position", m_FrontRightMotor.getSelectedSensorPosition(0));
+		SmartDashboard.putNumber("right drive velocity", m_FrontRightMotor.getSelectedSensorVelocity(0));
+		SmartDashboard.putNumber("left drive position", m_FrontLeftMotor.getSelectedSensorPosition(0));
+		SmartDashboard.putNumber("left drive velocity", m_FrontLeftMotor.getSelectedSensorVelocity(0));
 		
 	}
 	 
@@ -76,38 +85,7 @@ public class DriveTrain extends Subsystem {
 		m_SpeedSolenoid.set (boostOn);
 	}
 	
-	public void enablePID(int distance) {
-		zeroEncoders();
-		int nativeDist = distance*4096; // converts ROTATIONS to encoder ticks
-		
-		m_FrontLeftMotor.set(ControlMode.MotionMagic, nativeDist);
-		System.out.println("left done");
-		
-		m_FrontRightMotor.set(ControlMode.MotionMagic, nativeDist);
-		
-		System.out.println(nativeDist);
-	}
-	
-	private void setPID(double p, double i, double d) {
-		m_FrontLeftMotor.selectProfileSlot(0, 0);
-		m_FrontRightMotor.selectProfileSlot(0, 0);
-		m_FrontLeftMotor.config_kP(0, p, 10);
-		m_FrontRightMotor.config_kP(0, p, 10);
-		m_FrontLeftMotor.config_kI(0, i, 10);
-		m_FrontRightMotor.config_kI(0, i, 10);
-		m_FrontLeftMotor.config_kD(0, d, 10);
-		m_FrontRightMotor.config_kD(0, d, 10);
-	}
-	
-	private void setCruiseVA(int v, int a) {
-		m_FrontLeftMotor.configMotionCruiseVelocity(v, 10);
-		m_FrontRightMotor.configMotionCruiseVelocity(v, 10);
-		m_FrontLeftMotor.configMotionAcceleration(a, 10);
-		m_FrontRightMotor.configMotionAcceleration(a, 10);
-		
-	}
-	
-	private void zeroEncoders() {
+	public void zeroEncoders() {
 		m_FrontLeftMotor.setSelectedSensorPosition(0,0,10);
 		m_FrontRightMotor.setSelectedSensorPosition(0,0,10);
 	}
@@ -124,10 +102,23 @@ public class DriveTrain extends Subsystem {
 		m_FrontRightMotor.configPeakOutputReverse(-1, 10);
 	}
 	
-	public void initiateDiffDrive() {
-		// Create drive object	
-		m_drive = new DifferentialDrive(m_FrontRightMotor, m_FrontLeftMotor);
+	public double getEncoders() {
+		double left = m_FrontLeftMotor.getSelectedSensorPosition(0);
+		double right =  m_FrontRightMotor.getSelectedSensorPosition(0);
+		System.out.println("left=" + left);
+		System.out.println("right=" + right);
+		//return distance in native units (4096/rev)
+		return ((left+right)/2);
 	}
+	
+	public double getAngle() {
+		return navx.getAngle();
+	}
+	
+	public void enableDisablePID(boolean b) {
+		PIDEnabled = b;
+	}
+	
 	
 }
 

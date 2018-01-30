@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team58.robot.commands.Drive;
-import org.usfirst.frc.team58.robot.commands.DriveRotations;
+import org.usfirst.frc.team58.robot.commands.PIDdrive;
 import org.usfirst.frc.team58.robot.subsystems.*;
 
 /**
@@ -76,13 +76,14 @@ public class Robot extends TimedRobot {
 		// Get the game data string. (Ex: "LRL") - Tyler 01/10/18
 		//gameData = DriverStation.getInstance().getGameSpecificMessage();
 		// Set the autonomous command to the one selected in the dashboard. - Tyler 01/10/18
-		//autoCommand = Dashboard.getAutoProgram();
+		//autoCommand = Dashboard.getAutoProgram(); b
 		// If an autonomous program is selected (not null), start the selected program. - Tyler 01/10/18
 		//if (autoCommand != null) {
 		//	autoCommand.start();
 	//	}
 		
-		new DriveRotations(5);
+		new PIDdrive(15,1,10,200); // P, I, D, distance set-point in inches
+		//Possible good values without oscillation upon init: 15,1,10 for p i and d respectively - Tyler 01/27/18
 		System.out.println("hi");
 	}
 
@@ -105,9 +106,8 @@ public class Robot extends TimedRobot {
 			//autoCommand.cancel();
 		//}
 		
-		// start 
-		m_DriveTrain.initiateDiffDrive();
-		new Drive();
+		// Drive();
+
 	}
 
 	/**

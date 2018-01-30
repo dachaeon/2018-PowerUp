@@ -9,6 +9,7 @@ import org.usfirst.frc.team58.robot.RobotMap;
 
 public class Drive extends Command {	
 	
+	
 	public Drive() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_DriveTrain);
@@ -50,9 +51,10 @@ public class Drive extends Command {
 			boostOn = true;
 		}
 		
-		// Send values to Drive Train subsystem
-		Robot.m_DriveTrain.drive(moveValue, turnValue);
+		// Send values to Drive Train subsystem -- only if a PID command is not enabled
+		Robot.m_DriveTrain.drive(moveValue, turnValue, false);
 		Robot.m_DriveTrain.boost(boostOn);
+		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -71,4 +73,6 @@ public class Drive extends Command {
 	@Override
 	protected void interrupted() {
 	}
+	
+
 }
