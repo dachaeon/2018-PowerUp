@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team58.robot.commands.Drive;
+import org.usfirst.frc.team58.robot.commands.PIDRotate;
 import org.usfirst.frc.team58.robot.commands.PIDdrive;
 import org.usfirst.frc.team58.robot.subsystems.*;
 
@@ -82,9 +83,11 @@ public class Robot extends TimedRobot {
 		//	autoCommand.start();
 	//	}
 		
-		new PIDdrive(15,1,10,200); // P, I, D, distance set-point in inches
+		//new PIDdrive(15,1,10,200); // P, I, D, distance set-point in inches
 		//Possible good values without oscillation upon init: 15,1,10 for p i and d respectively - Tyler 01/27/18
 		System.out.println("hi");
+		new PIDRotate(0.03,0.0003,0,60);
+		
 	}
 
 	/**

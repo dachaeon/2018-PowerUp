@@ -42,11 +42,6 @@ public class PIDdrive extends PIDCommand {
 		c.enable();
 		Robot.m_DriveTrain.enableDisablePID(true);
 	}
-	
-	@Override
-	protected void execute() {
-		System.out.println("hello"); // apparently this never runs??
-	}
 
 	@Override
 	protected double returnPIDInput() {
@@ -57,7 +52,6 @@ public class PIDdrive extends PIDCommand {
 
 	@Override
 	protected void usePIDOutput(double output) {
-		
 		// get angle correction
 		double angle = Robot.m_DriveTrain.getAngle();
 		if (Math.abs(angle)<2) {

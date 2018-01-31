@@ -115,10 +115,13 @@ public class DriveTrain extends Subsystem {
 		return navx.getAngle();
 	}
 	
+	public void zeroNavx() {
+		navx.reset();
+	}
+	
 	public void enableDisablePID(boolean b) {
 		PIDEnabled = b;
 	}
-	
 	
 }
 
