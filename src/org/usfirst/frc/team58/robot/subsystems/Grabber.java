@@ -19,14 +19,14 @@ public class Grabber extends Subsystem {
 	
 	private WPI_TalonSRX m_RightMotor;
 	private WPI_TalonSRX m_LeftMotor;
-	private Solenoid m_releaseSolenoid;
+	//private Solenoid m_releaseSolenoid;
 	
 	
 	public Grabber() {
 		// Create motor instances
 		m_RightMotor = new WPI_TalonSRX(8); //numbers to be added once we know what is on CANbus
 		m_LeftMotor = new WPI_TalonSRX(9);
-		m_releaseSolenoid = new Solenoid(2);
+		//m_releaseSolenoid = new Solenoid(2);
 		
 		// Add encoders
 		m_RightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
@@ -41,7 +41,7 @@ public class Grabber extends Subsystem {
 	}
 	 
 	public void release (boolean releaseActivate) {
-		m_releaseSolenoid.set (releaseActivate);
+		//m_releaseSolenoid.set (releaseActivate);
 	}
 	
 	

@@ -55,6 +55,8 @@ public class OI {
 	public JoystickButton ExchangeHeight = new JoystickButton (operator, RobotMap.x);
 	public JoystickButton RestHeight = new JoystickButton (operator, RobotMap.a);
 	public JoystickButton Climb = new JoystickButton (operator, RobotMap.rightBumper);
+	public JoystickButton RearElevateUP = new JoystickButton (driver, RobotMap.rightBumper);
+	public JoystickButton RearElevateDOWN = new JoystickButton (driver, RobotMap.leftBumper);
 	
 	public OI() {
 		ScaleHeight.whenPressed(new PIDElevate(Dashboard.ScaleHeight));

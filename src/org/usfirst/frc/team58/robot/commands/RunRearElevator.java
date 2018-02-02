@@ -6,16 +6,19 @@ import org.usfirst.frc.team58.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class RunRearElevator extends Command {
+	private double speed;
 	
-	public RunRearElevator() {
+	
+	public RunRearElevator(double speed) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_RearElevator);
+		this.speed = speed;
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.m_RearElevator.driveElevator(0.5);
+		Robot.m_RearElevator.driveElevator(speed);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
