@@ -54,12 +54,14 @@ public class OI {
 	public JoystickButton SwitchHeight = new JoystickButton (operator, RobotMap.b);
 	public JoystickButton ExchangeHeight = new JoystickButton (operator, RobotMap.x);
 	public JoystickButton RestHeight = new JoystickButton (operator, RobotMap.a);
+	public JoystickButton Climb = new JoystickButton (operator, RobotMap.rightBumper);
 	
 	public OI() {
 		ScaleHeight.whenPressed(new PIDElevate(Dashboard.ScaleHeight));
 		SwitchHeight.whenPressed(new PIDElevate(Dashboard.SwitchHeight));
 		ExchangeHeight.whenPressed(new PIDElevate(Dashboard.ExchangeHeight));
 		RestHeight.whenPressed(new PIDElevate(Dashboard.RestHeight));
+		Climb.whileHeld(new Climb());
 		
 	}
 	
