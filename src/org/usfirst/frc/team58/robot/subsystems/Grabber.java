@@ -24,8 +24,8 @@ public class Grabber extends Subsystem {
 	
 	public Grabber() {
 		// Create motor instances
-		m_RightMotor = new WPI_TalonSRX(8); //numbers to be added once we know what is on CANbus
-		m_LeftMotor = new WPI_TalonSRX(9);
+		m_RightMotor = new WPI_TalonSRX(6); 
+		m_LeftMotor = new WPI_TalonSRX(7);
 		//m_releaseSolenoid = new Solenoid(2);
 		
 		// Add encoders

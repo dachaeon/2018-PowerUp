@@ -20,7 +20,8 @@ public class WeirdSyntaxDriveStraight extends Command {
 
 			@Override
 			public double pidGet() {
-				return Robot.m_DriveTrain.getEncoders();
+				//return Robot.m_DriveTrain.getEncoders();
+				return 0;
 			}
 
 			@Override
@@ -44,7 +45,7 @@ public class WeirdSyntaxDriveStraight extends Command {
 		@Override
 		protected void initialize() {
 			// Get everything in a safe starting state.
-			Robot.m_DriveTrain.reset();
+			//Robot.m_DriveTrain.reset();
 			m_pid.reset();
 			m_pid.enable();
 		}

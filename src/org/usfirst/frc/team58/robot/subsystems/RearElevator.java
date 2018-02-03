@@ -11,7 +11,7 @@ public class RearElevator extends Subsystem {
 	private DigitalInput m_limitSwitch;
 
 	public RearElevator() {
-		m_ElevatorMotor = new WPI_TalonSRX(8);
+		m_ElevatorMotor = new WPI_TalonSRX(10);
 		m_limitSwitch = new DigitalInput(0);
 	}
 	
@@ -25,7 +25,8 @@ public class RearElevator extends Subsystem {
 	}
 	
 	public boolean checkSwitch() {
-		return m_limitSwitch.get();
+		//return m_limitSwitch.get();
+		return false;
 	}
 	
 }

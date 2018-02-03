@@ -20,7 +20,7 @@ public class Elevator extends Subsystem {
 	
 	public Elevator() {
 		// Create motor instances
-		m_ElevatorMotor = new WPI_TalonSRX(7); //numbers to be added once we know what is on CANbus - Joe
+		m_ElevatorMotor = new WPI_TalonSRX(8); //numbers to be added once we know what is on CANbus - Joe
 		
 		// Add encoders
 		m_ElevatorMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
