@@ -60,7 +60,7 @@ public class Grab extends Command {
 		if (turnCubeValue == 0) {
 			Robot.m_Grabber.grabWheels(moveValue);
 		} else {
-			Robot.m_Grabber.turnCube(turnCubeValue);
+			Robot.m_Grabber.turnCube(turnCubeValue/2);
 		}
 		// this runs independent of grab wheels / turn cube
 		//Robot.m_Grabber.release(releaseActivate);

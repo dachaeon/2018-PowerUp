@@ -20,11 +20,21 @@ public class Dashboard {
 	public static double SwitchHeight;
 	public static double ExchangeHeight;
 	public static double RestHeight = 0;
+	public double rotate_kP;
+	public double rotate_kI;
+	public double rorate_kD;
+	public double drive_kP;
+	public double drive_kI;
+	public double drive_kD;
+	public double elevate_kP;
+	public double elevate_kI;
+	public double elevate_kD;
 	
 	// Start the dashboard, add preferences and the autonomous mode chooser. - Tyler 01/10/18
 	public static void initDashboard() {
 		addPreferences();
 		addAutoChooser();
+		
 	}
 	
 	// Add preferences. Allows you to edit variables directly from SmartDashboard. - Tyler 01/10/18
@@ -52,5 +62,6 @@ public class Dashboard {
 		autoCommand = autoChooser.getSelected();
 		return autoCommand;
 	}
+	
 	
 }

@@ -32,6 +32,9 @@ public class RunRearElevator extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
+		if (Robot.m_RearElevator.checkSwitch() == true) {
+			System.out.println("Hit it!");
+		}
 		return Robot.m_RearElevator.checkSwitch();
 	}
 

@@ -1,5 +1,7 @@
 package org.usfirst.frc.team58.robot.subsystems;
 
+import org.usfirst.frc.team58.robot.RobotMap;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -11,7 +13,7 @@ public class RearElevator extends Subsystem {
 	private DigitalInput m_limitSwitch;
 
 	public RearElevator() {
-		m_ElevatorMotor = new WPI_TalonSRX(10);
+		m_ElevatorMotor = new WPI_TalonSRX(RobotMap.rearElevator);
 		m_limitSwitch = new DigitalInput(0);
 	}
 	
@@ -25,8 +27,8 @@ public class RearElevator extends Subsystem {
 	}
 	
 	public boolean checkSwitch() {
-		//return m_limitSwitch.get();
-		return false;
+		return !m_limitSwitch.get();
+		//return false;
 	}
 	
 }

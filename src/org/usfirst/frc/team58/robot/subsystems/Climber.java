@@ -1,5 +1,6 @@
 package org.usfirst.frc.team58.robot.subsystems;
 
+import org.usfirst.frc.team58.robot.RobotMap;
 import org.usfirst.frc.team58.robot.commands.Climb;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -12,7 +13,7 @@ public class Climber extends Subsystem{
 	
 	public Climber() {
 		
-		m_climbMotor = new WPI_TalonSRX(9);
+		m_climbMotor = new WPI_TalonSRX(RobotMap.climber);
 		
 	}
 	

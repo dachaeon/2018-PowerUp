@@ -2,6 +2,7 @@
 
 package org.usfirst.frc.team58.robot.subsystems;
 
+import org.usfirst.frc.team58.robot.RobotMap;
 import org.usfirst.frc.team58.robot.commands.Drive;
 import org.usfirst.frc.team58.robot.commands.VariableElevate;
 
@@ -20,10 +21,10 @@ public class Elevator extends Subsystem {
 	
 	public Elevator() {
 		// Create motor instances
-		m_ElevatorMotor = new WPI_TalonSRX(8); //numbers to be added once we know what is on CANbus - Joe
+		m_ElevatorMotor = new WPI_TalonSRX(RobotMap.elevator); //numbers to be added once we know what is on CANbus - Joe
 		
 		// Add encoders
-		m_ElevatorMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		m_ElevatorMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 10);
 		
 		// Configure PID constants
 		m_ElevatorMotor.selectProfileSlot(0, 0); // Need to determine PID constants
@@ -34,6 +35,12 @@ public class Elevator extends Subsystem {
 		// Configure MotionMagic cruise velocity and acceleration
 		m_ElevatorMotor.configMotionCruiseVelocity(15000, 10); // Need to determine appropriate velocity and acceleration
 		m_ElevatorMotor.configMotionAcceleration(6000, 10);
+		
+		// reduces current to X when it exceeds & for Z milliseconds -- added by Emma 2/3
+		m_ElevatorMotor.configContinuousCurrentLimit(40, 0);
+		m_ElevatorMotor.configPeakCurrentLimit(50, 0);
+		m_ElevatorMotor.configPeakCurrentDuration(100, 0);
+		m_ElevatorMotor.enableCurrentLimit(true);
 	
 	}
 
@@ -42,7 +49,7 @@ public class Elevator extends Subsystem {
 	}
 	
 	public void variableControl(double moveValue) {
-		m_ElevatorMotor.set(moveValue);
+		m_ElevatorMotor.set(moveValue); // if going wrong way, make argument neagtive
 	}
 	
 	public void PIDControl (double height) {

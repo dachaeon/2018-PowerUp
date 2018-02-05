@@ -53,7 +53,7 @@ public class Robot extends TimedRobot {
 		Dashboard.initDashboard();
 		// This line creates a USB camera (integer 0) and starts streaming to the SmartDashboard.
 		// We can create more with different integers as needed. - Tyler 01/13/18
-		CameraServer.getInstance().startAutomaticCapture();
+		//CameraServer.getInstance().startAutomaticCapture();
 		
 	}
 

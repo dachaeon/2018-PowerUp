@@ -34,7 +34,7 @@ public class VariableElevate extends Command {
 			moveValue = 0;
 		}
 		
-		Robot.m_Elevator.variableControl(moveValue);
+		Robot.m_Elevator.variableControl(moveValue*0.75); // Duffy-Safe Mode is moveValue/2
 	}
 
 

@@ -2,6 +2,7 @@
 
 package org.usfirst.frc.team58.robot.subsystems;
 
+import org.usfirst.frc.team58.robot.RobotMap;
 import org.usfirst.frc.team58.robot.commands.Drive;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -26,10 +27,10 @@ public class DriveTrain extends Subsystem {
 	
 	public DriveTrain() {
 		// Create motor instances
-		m_FrontRightMotor = new WPI_TalonSRX(2); //numbers to be added once we know what is on CANbus - Tyler
-		m_FrontLeftMotor = new WPI_TalonSRX(4);
-		m_RightSlave = new WPI_VictorSPX(3);
-		m_LeftSlave = new WPI_VictorSPX(5);
+		m_FrontRightMotor = new WPI_TalonSRX(RobotMap.rightDriveTalon);//numbers to be added once we know what is on CANbus - Tyler
+		m_FrontLeftMotor = new WPI_TalonSRX(RobotMap.leftDriveTalon);
+		m_RightSlave = new WPI_VictorSPX(RobotMap.rightDriveVictor);
+		m_LeftSlave = new WPI_VictorSPX(RobotMap.leftDriveVictor);
 		m_SpeedSolenoid = new Solenoid(1);
 		
 		// Config Victors to follow Talons

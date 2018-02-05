@@ -2,6 +2,7 @@
 
 package org.usfirst.frc.team58.robot.subsystems;
 
+import org.usfirst.frc.team58.robot.RobotMap;
 import org.usfirst.frc.team58.robot.commands.Drive;
 import org.usfirst.frc.team58.robot.commands.Grab;
 
@@ -24,13 +25,14 @@ public class Grabber extends Subsystem {
 	
 	public Grabber() {
 		// Create motor instances
-		m_RightMotor = new WPI_TalonSRX(6); 
-		m_LeftMotor = new WPI_TalonSRX(7);
-		//m_releaseSolenoid = new Solenoid(2);
+		m_RightMotor = new WPI_TalonSRX(RobotMap.rightGrabber); 
+		m_LeftMotor = new WPI_TalonSRX(RobotMap.leftGrabber);
+		m_RightMotor.setInverted(true);
+		//m_releaseSolenoid = new Solenoid(2); // not using now
 		
-		// Add encoders
-		m_RightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
-		m_LeftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		// Add encoders -- I guess not using?
+		//m_RightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
+		//m_LeftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		
 	}
 
@@ -46,14 +48,14 @@ public class Grabber extends Subsystem {
 	
 	
 	public void grabWheels (double moveValue) {
-		m_RightMotor.set (moveValue);
+		m_RightMotor.set (moveValue); // if going wrong way, add negative to each of these
 		m_LeftMotor.set (moveValue);
 	}
 	
 	public void turnCube (double turnSpeed) {
 		// Passing in 1 will turn cube right
 		// Passing in -1 will turn cube left
-		m_LeftMotor.set(turnSpeed);
+		m_LeftMotor.set(turnSpeed); // if going wrong way, change which is negative
 		m_RightMotor.set(-turnSpeed);
 	}
 

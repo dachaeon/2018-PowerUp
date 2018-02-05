@@ -42,4 +42,15 @@ public class RobotMap {
 	public static int grabAxis = 1;
 	public static int releaseAxis = 2;
 	
+	// ALL THE SPEED CONTROLLERS!!!
+	public static int rightDriveTalon = 2;
+	public static int rightDriveVictor = 3;
+	public static int leftDriveTalon = 4;
+	public static int leftDriveVictor = 5;
+	public static int rightGrabber = 6;
+	public static int leftGrabber = 7;
+	public static int elevator = 8;
+	public static int rearElevator = 10;
+	public static int climber = 9;
+	
 }

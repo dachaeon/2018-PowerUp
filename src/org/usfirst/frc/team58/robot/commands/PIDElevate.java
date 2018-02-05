@@ -8,7 +8,7 @@ import org.usfirst.frc.team58.robot.Robot;
 
 public class PIDElevate extends Command {	
 	
-	double height;
+	double height; // in inches!
 	
 	public PIDElevate(double height) {
 		// Use requires() here to declare subsystem dependencies
