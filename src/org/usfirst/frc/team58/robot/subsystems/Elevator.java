@@ -49,6 +49,9 @@ public class Elevator extends Subsystem {
 	}
 	
 	public void variableControl(double moveValue) {
+		if (moveValue < 0) {
+			moveValue = moveValue*0.75; // down speed limit
+		}
 		m_ElevatorMotor.set(moveValue); // if going wrong way, make argument neagtive
 	}
 	

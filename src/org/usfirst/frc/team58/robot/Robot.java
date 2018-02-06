@@ -86,7 +86,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		// Get the game data string. (Ex: "LRL") - Tyler 01/10/18
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		//gameData = DriverStation.getInstance().getGameSpecificMessage(); 
+		gameData = "LLL"; // for testing at home
 		// Set the autonomous command to the one selected in the dashboard. - Tyler 01/10/18
 		autoCommand = Dashboard.getAutoProgram();
 		// If an autonomous program is selected (not null), start the selected program. - Tyler 01/10/18
