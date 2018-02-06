@@ -11,7 +11,7 @@ public class SpitCube extends Command {
 	long duration;
 	
 	public SpitCube () {
-		duration = 300; //not sure how long, approx 1/3 of second enough?
+		duration = 1000; //ot sure how long, approx 1 second enough?
 	}
 	
 	@Override
@@ -22,6 +22,8 @@ public class SpitCube extends Command {
 	
 	@Override
 	protected void execute() {
+		Robot.m_Grabber.grabWheels(-1);
+		
 		// ends when duration is completed
 		if (isFinished()) {
 			end();
