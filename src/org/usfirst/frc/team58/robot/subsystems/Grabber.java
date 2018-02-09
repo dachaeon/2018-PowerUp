@@ -18,15 +18,15 @@ public class Grabber extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	
-	private WPI_TalonSRX m_RightMotor;
-	private WPI_TalonSRX m_LeftMotor;
+	private WPI_VictorSPX m_RightMotor;
+	private WPI_VictorSPX m_LeftMotor;
 	//private Solenoid m_releaseSolenoid;
 	
 	
 	public Grabber() {
 		// Create motor instances
-		m_RightMotor = new WPI_TalonSRX(RobotMap.rightGrabber); 
-		m_LeftMotor = new WPI_TalonSRX(RobotMap.leftGrabber);
+		m_RightMotor = new WPI_VictorSPX(RobotMap.rightGrabber); 
+		m_LeftMotor = new WPI_VictorSPX(RobotMap.leftGrabber);
 		m_RightMotor.setInverted(true);
 		//m_releaseSolenoid = new Solenoid(2); // not using now
 		
