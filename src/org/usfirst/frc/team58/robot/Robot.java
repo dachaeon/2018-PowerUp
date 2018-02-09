@@ -83,10 +83,10 @@ public class Robot extends TimedRobot {
 		//	autoCommand.start();
 	//	}
 		
-		new PIDdrive(1,0,0,10); // P, I, D, distance set-point in inches
+		//new PIDdrive(1,0,0,10); // P, I, D, distance set-point in inches
 		//Possible good values without oscillation upon init: 15,1,10 for p i and d respectively - Tyler 01/27/18
 		System.out.println("hi");
-		//new PIDRotate(0.0[3,0.0003,0,60);
+		new PIDRotate(0.03,0.0003,0,45);
 		
 	}
 
