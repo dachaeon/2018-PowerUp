@@ -18,6 +18,7 @@ public class PIDRotate extends PIDCommand {
 		requires(Robot.m_DriveTrain);
 		setTimeout(5);
 		c.setAbsoluteTolerance(1);
+		setInterruptible(false);
 		initialize();
 	}
 	
@@ -61,8 +62,7 @@ public class PIDRotate extends PIDCommand {
 
 	@Override
 	protected void end() {
-		c.reset();
-		c.setEnabled(false);
+		c.free();
 		Robot.m_DriveTrain.enableDisablePID(false);
 	}
 	

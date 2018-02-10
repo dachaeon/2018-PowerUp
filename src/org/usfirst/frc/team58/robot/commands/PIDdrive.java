@@ -63,6 +63,8 @@ public class PIDdrive extends Command {
 		
 		System.out.println("PID drive constructed");
 		
+		setInterruptible(false);
+		
 		initialize();
 	}
 	
@@ -125,8 +127,7 @@ public class PIDdrive extends Command {
 	@Override
 	protected void end() {
 		System.out.println("THIS IS THE END");
-		c.reset();
-		c.setEnabled(false);
+		c.free();
 		Robot.m_DriveTrain.drive(0, 0, true);
 		Robot.m_DriveTrain.enableDisablePID(false);
 	}

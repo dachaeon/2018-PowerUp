@@ -89,7 +89,9 @@ public class Robot extends TimedRobot {
 		//new PIDdrive(3,0,0,72); // P, I, D, distance set-point in inches
 		System.out.println("hi");
 		Scheduler.getInstance().removeAll();
-		new RightAngle();
+		RightAngle RtAngle = new RightAngle();
+		RtAngle.start();
+		
 		//Final P,I, and D Values - 0.03, 0.006, 0.07 Tyler 02/10
 		//new PIDRotate(0.03,0.006,0.07,45);
 	}
@@ -99,7 +101,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
+		
 	}
 
 	@Override
