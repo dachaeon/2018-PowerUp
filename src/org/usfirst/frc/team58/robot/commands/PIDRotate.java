@@ -9,7 +9,7 @@ public class PIDRotate extends PIDCommand {
 
 	PIDController c;
 	
-	public PIDRotate(double p, double i, double d, double angle) {
+	public PIDRotate(double p, double i, double d, double angle){
 		super(p, i, d);
 		// Access controller and set setpoint
 		c = getPIDController();
