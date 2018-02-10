@@ -17,7 +17,7 @@ public class PIDRotate extends PIDCommand {
 		// Access Drive Train
 		requires(Robot.m_DriveTrain);
 		setTimeout(5);
-		c.setPercentTolerance(2);
+		c.setAbsoluteTolerance(1);
 		initialize();
 	}
 	
@@ -47,11 +47,9 @@ public class PIDRotate extends PIDCommand {
 
 	@Override
 	protected boolean isFinished() {
+		// normally if (c.onTarget())
 		if (c.onTarget()) {
 			System.out.println("finished");
-			return true;
-		} else if(isTimedOut()) {
-			System.out.println("timed out");
 			return true;
 		} else {
 			System.out.println("not there yet");
@@ -63,14 +61,14 @@ public class PIDRotate extends PIDCommand {
 
 	@Override
 	protected void end() {
-		c.disable();
+		c.reset();
+		c.setEnabled(false);
 		Robot.m_DriveTrain.enableDisablePID(false);
 	}
 	
 	@Override
 	protected void interrupted() {
-		c.disable();
-		Robot.m_DriveTrain.enableDisablePID(false);
+		end();
 	}
 
 }

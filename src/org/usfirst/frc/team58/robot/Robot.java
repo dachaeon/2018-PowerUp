@@ -10,6 +10,7 @@ package org.usfirst.frc.team58.robot;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -18,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team58.robot.commands.Drive;
 import org.usfirst.frc.team58.robot.commands.PIDRotate;
 import org.usfirst.frc.team58.robot.commands.PIDdrive;
+import org.usfirst.frc.team58.robot.commands.RightAngle;
 import org.usfirst.frc.team58.robot.subsystems.*;
 
 /**
@@ -32,6 +34,7 @@ public class Robot extends TimedRobot {
 			= new DriveTrain();
 	public static OI m_oi;
 	public static String gameData;
+
 
 	//Command autoCommand;
 	//SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -77,17 +80,18 @@ public class Robot extends TimedRobot {
 		// Get the game data string. (Ex: "LRL") - Tyler 01/10/18
 		//gameData = DriverStation.getInstance().getGameSpecificMessage();
 		// Set the autonomous command to the one selected in the dashboard. - Tyler 01/10/18
-		//autoCommand = Dashboard.getAutoProgram(); b
+		//autoCommand = Dashboard.getAutoProgram(); 
 		// If an autonomous program is selected (not null), start the selected program. - Tyler 01/10/18
 		//if (autoCommand != null) {
 		//	autoCommand.start();
 	//	}
 		
-		//new PIDdrive(1,0,0,10); // P, I, D, distance set-point in inches
-		//Possible good values without oscillation upon init: 15,1,10 for p i and d respectively - Tyler 01/27/18
+		//new PIDdrive(3,0,0,72); // P, I, D, distance set-point in inches
 		System.out.println("hi");
-		new PIDRotate(0.03,0.0003,0,45);
-		
+		Scheduler.getInstance().removeAll();
+		new RightAngle();
+		//Final P,I, and D Values - 0.03, 0.006, 0.07 Tyler 02/10
+		//new PIDRotate(0.03,0.006,0.07,45);
 	}
 
 	/**
@@ -129,4 +133,5 @@ public class Robot extends TimedRobot {
 	public void testPeriodic() {
 			//LiveWindow.run(); This was in last year's code, but throws a weird warning when included. - Tyler 01/10/18
 	}
+	
 }

@@ -54,8 +54,9 @@ public class PIDdrive extends Command {
 		// convert setpoint distance to native units for encoders
 		nu_dist = (distance*4096)/(6*Math.PI);
 		c.setSetpoint(nu_dist);		
+		c.setAbsoluteTolerance((4096)/(6*Math.PI));
 		// set minimum and maximum inputs
-		//setInputRange(-0.5, 0.5);
+		c.setOutputRange(-0.5, 0.5);
 		
 		// set timeout to 15 sec
 		//setTimeout(15);
@@ -84,9 +85,6 @@ public class PIDdrive extends Command {
 		double angle = Robot.m_DriveTrain.getAngle();
 		if (Math.abs(angle)<2) {
 			angle = 0;
-			
-		
-		
 		} else {
 			angle = angle/100; // scale down angle to make it a small correction. Change scale factor as needed - Emma
 		}
@@ -94,23 +92,24 @@ public class PIDdrive extends Command {
 		System.out.println("output = " + output + "angle = " + angle);
 		// send to drive train
 		Robot.m_DriveTrain.drive(-output, 0, true); // has to be negative output
+		
 		if (isFinished()) {
 			end();
-		}
+		} 
 	}
 	
 	@Override
 	protected void execute() {
 		double output = c.get();
 		usePIDOutput(output);
-		
+
 	}
 
 	@Override
 	protected boolean isFinished() {
 		
-		// apparently never runs either???
-		if (Robot.m_DriveTrain.getEncoders() >= nu_dist ) {
+		// this was initially Robot.m_DriveTrain.getEncoders() >= nu_dist
+		if (c.onTarget()) {
 			System.out.println("at setpoint");
 			return true; // if you go to the setpoint, stop
 		} 
@@ -125,17 +124,16 @@ public class PIDdrive extends Command {
 	}
 	@Override
 	protected void end() {
-		c.disable();
+		System.out.println("THIS IS THE END");
+		c.reset();
+		c.setEnabled(false);
 		Robot.m_DriveTrain.drive(0, 0, true);
 		Robot.m_DriveTrain.enableDisablePID(false);
 	}
 	
 	@Override
 	protected void interrupted() {
-		c.disable();
-		Robot.m_DriveTrain.drive(0, 0, true);
-		Robot.m_DriveTrain.enableDisablePID(false);
-
+		end();
 	}
 
 }
