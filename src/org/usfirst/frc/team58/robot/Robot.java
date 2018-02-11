@@ -86,12 +86,18 @@ public class Robot extends TimedRobot {
 		//	autoCommand.start();
 		//	}
 		
-		new PIDdrive(3,0,0,36); // P, I, D, distance set-point in inches
+		
+		// ^^^^^^^^^^ THIS SHOULD WORK FINE ONCE WE HAVE THE WHOLE SHEBANG READY
+		// what is below wasn't working because we need to have the command object ready and .start() it
+		
 		System.out.println("hi");
 		Scheduler.getInstance().removeAll();
 		//new RightAngle();
 		//RtAngle.start();
-		
+	
+		Command auto = new RightAngle();
+		//new PIDdrive(3,0,0,36); // P, I, D, distance set-point in inches
+		auto.start();
 		//Final P,I, and D Values - 0.03, 0.006, 0.07 Tyler 02/10
 		//new PIDRotate(0.03,0.006,0.07,45);
 	}

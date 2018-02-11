@@ -65,7 +65,7 @@ public class PIDdrive extends Command {
 		
 		//setInterruptible(false);
 		
-		initialize();
+		//initialize();
 	}
 	
 	@Override
@@ -95,9 +95,9 @@ public class PIDdrive extends Command {
 		// send to drive train
 		Robot.m_DriveTrain.drive(-output, 0, true); // has to be negative output
 		
-		if (isFinished()) {
-			end();
-		} 
+		//if (isFinished()) {
+			//end();
+		//} 
 	}
 	
 	@Override

@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 
 public class RightAngle extends CommandGroup {
 	public RightAngle() {
-		addSequential(new PIDdrive(3,0,0,72));
+		addSequential(new PIDdrive(3,0,0,36));
 		
 		addSequential(new PIDRotate(0.03,0.006,0.07,90));
 	
-		addSequential(new PIDdrive(3,0,0,36));
+		addSequential(new PIDdrive(3,0,0,72));
 		//if(Robot.gameData.charAt(0) == 'L') {
 			//addSequential(new DriveForwward(distance));
 			//addSequential(new Rotate(-45));

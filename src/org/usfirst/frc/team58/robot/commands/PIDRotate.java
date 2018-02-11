@@ -18,8 +18,6 @@ public class PIDRotate extends PIDCommand {
 		requires(Robot.m_DriveTrain);
 		setTimeout(5);
 		c.setAbsoluteTolerance(1);
-		//setInterruptible(false);
-		initialize();
 	}
 	
 	@Override
@@ -41,9 +39,6 @@ public class PIDRotate extends PIDCommand {
 	protected void usePIDOutput(double output) {
 		System.out.println(output);
 		Robot.m_DriveTrain.drive(0, output, true);
-		if (isFinished()) {
-			end();
-		}
 	}
 
 	@Override
