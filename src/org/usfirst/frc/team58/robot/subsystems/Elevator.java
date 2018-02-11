@@ -25,16 +25,19 @@ public class Elevator extends Subsystem {
 		
 		// Add encoders
 		m_ElevatorMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 10);
+		m_ElevatorMotor.setInverted(true);
+		zeroEncoder();
 		
 		// Configure PID constants
 		m_ElevatorMotor.selectProfileSlot(0, 0); // Need to determine PID constants
-		m_ElevatorMotor.config_kP(0,  0,  10);
+		m_ElevatorMotor.config_kP(0,  0.1,  10);
 		m_ElevatorMotor.config_kI(0,  0,  10);
 		m_ElevatorMotor.config_kD(0,  0,  10);
+		m_ElevatorMotor.configAllowableClosedloopError(0, 4000, 10);
 		
 		// Configure MotionMagic cruise velocity and acceleration
-		m_ElevatorMotor.configMotionCruiseVelocity(15000, 10); // Need to determine appropriate velocity and acceleration
-		m_ElevatorMotor.configMotionAcceleration(6000, 10);
+		m_ElevatorMotor.configMotionCruiseVelocity(3000, 10); // Need to determine appropriate velocity and acceleration
+		m_ElevatorMotor.configMotionAcceleration(1000, 10);
 		
 		// reduces current to X when it exceeds & for Z milliseconds -- added by Emma 2/3
 		m_ElevatorMotor.configContinuousCurrentLimit(40, 0);
@@ -49,10 +52,12 @@ public class Elevator extends Subsystem {
 	}
 	
 	public void variableControl(double moveValue) {
-		if (moveValue < 0) {
-			moveValue = moveValue*0.75; // down speed limit
+		if (moveValue > 0) {
+			moveValue = moveValue*0.5; // down speed limit -- negative is UP
 		}
-		m_ElevatorMotor.set(moveValue); // if going wrong way, make argument neagtive
+		m_ElevatorMotor.set(-moveValue); // if going wrong way, make argument negative
+		
+		System.out.println(m_ElevatorMotor.getSelectedSensorPosition(0));
 	}
 	
 	public void PIDControl (double height) {
@@ -61,6 +66,14 @@ public class Elevator extends Subsystem {
 	
 	public void returnToVariableControl () {
 		m_ElevatorMotor.set(ControlMode.PercentOutput, 0);
+	}
+	
+	public void zeroEncoder() {
+		m_ElevatorMotor.setSelectedSensorPosition(0, 0, 10);
+	}
+	
+	public double getEncoder() {
+		return m_ElevatorMotor.getSelectedSensorPosition(0);
 	}
 }
 
