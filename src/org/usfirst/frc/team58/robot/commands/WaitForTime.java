@@ -1,30 +1,27 @@
-// for use in auto only
-
 package org.usfirst.frc.team58.robot.commands;
 
 import org.usfirst.frc.team58.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class SpitCube extends Command {
+public class WaitForTime extends Command {
 	long startTime;
 	long duration;
 	
-	public SpitCube () {
+	public WaitForTime () {
 		requires(Robot.m_Grabber);
 		duration = 1000; //ot sure how long, approx 1 second enough?
 	}
 	
 	@Override
 	protected void initialize() {
-		System.out.println("spitting cube");
 		startTime = System.currentTimeMillis();
-		Robot.m_Grabber.grabWheels(1);
+		Robot.m_Grabber.grabWheels(0);
 	}
 	
 	@Override
 	protected void execute() {
-		Robot.m_Grabber.grabWheels(1);
+		Robot.m_Grabber.grabWheels(0);
 		
 		// ends when duration is completed
 		//if (isFinished()) {
@@ -36,7 +33,7 @@ public class SpitCube extends Command {
 	protected boolean isFinished() {
 		// checks to see if duration has elapsed since start time
 		if (System.currentTimeMillis() >= startTime + duration) {
-			System.out.println("checking time");
+			System.out.println("waiting");
 			return true;
 		} else {
 			return false;
@@ -53,5 +50,6 @@ public class SpitCube extends Command {
 	protected void interrupted() {
 		Robot.m_Grabber.grabWheels(0);
 	}
+
 
 }

@@ -16,6 +16,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team58.robot.commands.PIDElevate;
+import org.usfirst.frc.team58.robot.commands.SpitCube;
+import org.usfirst.frc.team58.robot.commands.SpitWaitSpit;
 import org.usfirst.frc.team58.robot.subsystems.*;
 
 /**
@@ -87,13 +89,17 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		// Get the game data string. (Ex: "LRL") - Tyler 01/10/18
 		//gameData = DriverStation.getInstance().getGameSpecificMessage(); 
-		gameData = "LLL"; // for testing at home
+		//gameData = "LLL"; // for testing at home
 		// Set the autonomous command to the one selected in the dashboard. - Tyler 01/10/18
-		autoCommand = Dashboard.getAutoProgram();
+		//autoCommand = Dashboard.getAutoProgram();
 		// If an autonomous program is selected (not null), start the selected program. - Tyler 01/10/18
-		if (autoCommand != null) {
-			autoCommand.start();
-		}
+		//if (autoCommand != null) {
+			//autoCommand.start();
+		//}
+		//new SpitWaitSpit();
+		System.out.println("Starting Auto");
+		Command spit = new SpitWaitSpit();
+		spit.start();
 	}
 
 	/**
@@ -111,9 +117,11 @@ public class Robot extends TimedRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		
-		if (autoCommand != null) {
-			autoCommand.cancel();
-		}
+		//if (autoCommand != null) {
+			//autoCommand.cancel();
+		//}
+		
+		//new SpitWaitSpit();
 	}
 
 	/**
