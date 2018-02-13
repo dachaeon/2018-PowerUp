@@ -65,8 +65,8 @@ public class OI {
 		ExchangeHeight.whenPressed(new PIDElevate(Dashboard.ExchangeHeight));
 		RestHeight.whenPressed(new PIDElevate(Dashboard.RestHeight));
 		Climb.whileHeld(new Climb());
-		RearElevateUP.whileHeld(new RunRearElevator(0.1));
-		RearElevateDOWN.whileHeld(new RunRearElevator(-0.1));
+		RearElevateUP.whileHeld(new RunRearElevator(0.3));
+		RearElevateDOWN.whileHeld(new RunRearElevator(-0.3));
 		SpitOutCube.whenPressed(new SpitCube());
 		
 	}
