@@ -27,7 +27,7 @@ public class Grabber extends Subsystem {
 		// Create motor instances
 		m_RightMotor = new WPI_VictorSPX(RobotMap.rightGrabber); 
 		m_LeftMotor = new WPI_VictorSPX(RobotMap.leftGrabber);
-		m_RightMotor.setInverted(true);
+		m_LeftMotor.setInverted(true);
 		//m_releaseSolenoid = new Solenoid(2); // not using now
 		
 		// Add encoders -- I guess not using?

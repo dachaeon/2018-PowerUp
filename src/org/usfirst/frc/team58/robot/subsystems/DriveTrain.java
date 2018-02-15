@@ -29,7 +29,9 @@ public class DriveTrain extends Subsystem {
 		// Create motor instances
 		m_FrontRightMotor = new WPI_TalonSRX(RobotMap.rightDriveTalon);//numbers to be added once we know what is on CANbus - Tyler
 		m_FrontLeftMotor = new WPI_TalonSRX(RobotMap.leftDriveTalon);
+		m_FrontLeftMotor.setInverted(true);
 		m_RightSlave = new WPI_VictorSPX(RobotMap.rightDriveVictor);
+		m_RightSlave.setInverted(true);
 		m_LeftSlave = new WPI_VictorSPX(RobotMap.leftDriveVictor);
 		m_SpeedSolenoid = new Solenoid(1);
 		
