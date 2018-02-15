@@ -16,11 +16,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team58.robot.commands.Drive;
-import org.usfirst.frc.team58.robot.commands.PIDRotate;
-import org.usfirst.frc.team58.robot.commands.PIDdrive;
-import org.usfirst.frc.team58.robot.commands.RightAngle;
 import org.usfirst.frc.team58.robot.subsystems.*;
+import org.usfirst.frc.team58.robot.commands.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -78,7 +75,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		// Get the game data string. (Ex: "LRL") - Tyler 01/10/18
-		//gameData = DriverStation.getInstance().getGameSpecificMessage();
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		// Set the autonomous command to the one selected in the dashboard. - Tyler 01/10/18
 		//autoCommand = Dashboard.getAutoProgram(); 
 		// If an autonomous program is selected (not null), start the selected program. - Tyler 01/10/18
@@ -95,7 +92,7 @@ public class Robot extends TimedRobot {
 		//new RightAngle();
 		//RtAngle.start();
 	
-		Command auto = new RightAngle();
+		Command auto = new MiddleSwitch();
 		//new PIDdrive(3,0,0,36); // P, I, D, distance set-point in inches
 		auto.start();
 		//Final P,I, and D Values - 0.03, 0.006, 0.07 Tyler 02/10

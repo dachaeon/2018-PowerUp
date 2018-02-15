@@ -54,9 +54,9 @@ public class PIDdrive extends Command {
 		// convert setpoint distance to native units for encoders
 		nu_dist = (distance*4096)/(6*Math.PI);
 		c.setSetpoint(nu_dist);		
-		c.setAbsoluteTolerance((4096)/(6*Math.PI));
+		c.setAbsoluteTolerance((2048)/(6*Math.PI));
 		// set minimum and maximum inputs
-		c.setOutputRange(-0.5, 0.5);
+		c.setOutputRange(-0.75, 0.75);
 		
 		// set timeout to 15 sec
 		//setTimeout(15);
@@ -88,7 +88,7 @@ public class PIDdrive extends Command {
 		if (Math.abs(angle)<2) {
 			angle = 0;
 		} else {
-			angle = angle/100; // scale down angle to make it a small correction. Change scale factor as needed - Emma
+			angle = angle/30; // scale down angle to make it a small correction. Change scale factor as needed - Emma
 		}
 		
 		System.out.println("output = " + output + "angle = " + angle);
