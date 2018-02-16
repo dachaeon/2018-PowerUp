@@ -9,7 +9,12 @@ import org.usfirst.frc.team58.robot.RobotMap;
 
 public class VariableElevate extends Command {	
 	
+<<<<<<< HEAD:src/org/usfirst/frc/team58/robot/commands/VariableElevate.java
 	public VariableElevate() {
+=======
+	
+	public Drive() {
+>>>>>>> drivesystem-only:src/org/usfirst/frc/team58/robot/commands/Drive.java
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_Elevator);
 	}
@@ -34,7 +39,23 @@ public class VariableElevate extends Command {
 			moveValue = 0;
 		}
 		
+<<<<<<< HEAD:src/org/usfirst/frc/team58/robot/commands/VariableElevate.java
 		Robot.m_Elevator.variableControl(moveValue); // Duffy-Safe Mode is moveValue*0.75
+=======
+		if ((turnValue <= 0.2) && (turnValue >= -0.2)){
+			turnValue = 0;
+		}
+		
+		// Determine if Boost should be on
+		if (boostValue >= 0.75) {
+			boostOn = true;
+		}
+		
+		// Send values to Drive Train subsystem -- only if a PID command is not enabled
+		Robot.m_DriveTrain.drive(moveValue, turnValue, false);
+		Robot.m_DriveTrain.boost(boostOn);
+		
+>>>>>>> drivesystem-only:src/org/usfirst/frc/team58/robot/commands/Drive.java
 	}
 
 
@@ -55,4 +76,6 @@ public class VariableElevate extends Command {
 	protected void interrupted() {
 		Robot.m_Elevator.variableControl(0);
 	}
+	
+
 }
