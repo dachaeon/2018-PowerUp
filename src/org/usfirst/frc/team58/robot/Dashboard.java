@@ -17,7 +17,7 @@ public class Dashboard {
 	// Preferences variables to be edited in the SmartDashboard. - Tyler 01/10/18
 	// public static double elevatorSpeed; 
 	public static double ScaleHeight = -39900;
-	public static double SwitchHeight;
+	public static double SwitchHeight = 8000;
 	public static double ExchangeHeight;
 	public static double RestHeight = 0;
 	public double rotate_kP;
