@@ -1,4 +1,4 @@
-// Created by Emma and Joe on 01/13/18
+// Created by Tyler, Emma, and Joe on 01/08/18
 
 package org.usfirst.frc.team58.robot.commands;
 
@@ -7,39 +7,55 @@ import org.usfirst.frc.team58.robot.Robot;
 import org.usfirst.frc.team58.robot.RobotMap;
 
 
-public class VariableElevate extends Command {	
+public class Drive extends Command {	
 	
-
-	public VariableElevate() {
+	
+	public Drive() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.m_Elevator);
+		requires(Robot.m_DriveTrain);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.m_Elevator.variableControl(0);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		double moveValue = Robot.m_oi.operator.getRawAxis(RobotMap.elevateAxis);
+		// Collect values from Driver control
+		double moveValue = Robot.m_oi.driver.getRawAxis(RobotMap.moveAxis);
+		double turnValue = Robot.m_oi.driver.getRawAxis(RobotMap.turnAxis);
+		double boostValue = Robot.m_oi.driver.getRawAxis(RobotMap.boostAxis);
+		boolean boostOn = false;
+		
+		// Set moveValue to 100% if moveAxis is 90% or more
 		if (moveValue > 0.9) {
 			moveValue = 1;
 		}
 		if (moveValue < -0.9) {
 			moveValue = -1;
 		}
-		if ((moveValue > -0.2) && (moveValue < 0.2)) {
+		
+		// Deadbands for driving controllers
+		if ((moveValue <= 0.2) && (moveValue >= -0.2)) {
 			moveValue = 0;
 		}
 		
-
-		Robot.m_Elevator.variableControl(moveValue); // Duffy-Safe Mode is moveValue*0.75
+		if ((turnValue <= 0.2) && (turnValue >= -0.2)){
+			turnValue = 0;
+		}
+		
+		// Determine if Boost should be on
+		if (boostValue >= 0.75) {
+			boostOn = true;
+		}
+		
+		// Send values to Drive Train subsystem -- only if a PID command is not enabled
+		Robot.m_DriveTrain.drive(moveValue, turnValue, false);
+		Robot.m_DriveTrain.boost(boostOn);
 		
 	}
-
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
@@ -56,7 +72,6 @@ public class VariableElevate extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		Robot.m_Elevator.variableControl(0);
 	}
 	
 

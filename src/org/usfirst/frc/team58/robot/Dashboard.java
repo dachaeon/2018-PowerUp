@@ -47,12 +47,10 @@ public class Dashboard {
 	public static void addAutoChooser(){
 		autoChooser = new SendableChooser<Command>();
 		// Make the default auto program Middle Switch. Might change to Cross Line. - Tyler 01/10/18
-		autoChooser.addDefault("Default Program: Middle Switch", new MiddleSwitch());
-		//autoChooser.addObject("Cross Line", new DriveForward(distance));
-		//autoChooser.addObject("Left Switch", new LeftSwitch());
-		//autoChooser.addObject("Right Switch", new RightSwitch());
-		//autoChooser.addObject("Left Adventurous", new LeftAdventurous());
-		//autoChooser.addObject("Right Adventurous", new LeftAdventurous());
+		autoChooser.addDefault("Default Program: Cross Line", new PIDdrive(3,3,0,125));
+		autoChooser.addObject("Middle Switch", new MiddleSwitch());
+		autoChooser.addObject("Left Switch", new LeftSwitch());
+		autoChooser.addObject("Right Switch", new RightSwitch());
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 		
 	}

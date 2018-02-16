@@ -56,7 +56,7 @@ public class PIDdrive extends Command {
 		c.setSetpoint(nu_dist);		
 		c.setAbsoluteTolerance((2048)/(6*Math.PI));
 		// set minimum and maximum inputs
-		c.setOutputRange(-0.75, 0.75);
+		c.setOutputRange(-0.5, 0.5);
 		
 		// set timeout to 15 sec
 		//setTimeout(15);

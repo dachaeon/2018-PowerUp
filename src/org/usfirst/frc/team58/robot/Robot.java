@@ -16,13 +16,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-<<<<<<< HEAD
-import org.usfirst.frc.team58.robot.commands.PIDElevate;
-import org.usfirst.frc.team58.robot.commands.SpitCube;
-import org.usfirst.frc.team58.robot.commands.SpitWaitSpit;
-=======
 
->>>>>>> drivesystem-only
 import org.usfirst.frc.team58.robot.subsystems.*;
 import org.usfirst.frc.team58.robot.commands.*;
 
@@ -48,8 +42,8 @@ public class Robot extends TimedRobot {
 	public static String gameData;
 
 
-	//Command autoCommand;
-	//SendableChooser<Command> m_chooser = new SendableChooser<>();
+	Command autoCommand;
+	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -58,16 +52,13 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
-<<<<<<< HEAD
+
 		// Start the SmartDashboard. - Tyler 01/13/18
 		Dashboard.initDashboard();
+		
 		// This line creates a USB camera (integer 0) and starts streaming to the SmartDashboard.
 		// We can create more with different integers as needed. - Tyler 01/13/18
 		//CameraServer.getInstance().startAutomaticCapture();
-		
-=======
-		//Dashboard.initDashboard();
->>>>>>> drivesystem-only
 	}
 
 	/**
@@ -99,41 +90,13 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		// Get the game data string. (Ex: "LRL") - Tyler 01/10/18
-		//gameData = DriverStation.getInstance().getGameSpecificMessage(); 
-		//gameData = "LLL"; // for testing at home
+		gameData = DriverStation.getInstance().getGameSpecificMessage(); 
 		// Set the autonomous command to the one selected in the dashboard. - Tyler 01/10/18
-<<<<<<< HEAD
-		//autoCommand = Dashboard.getAutoProgram();
+		autoCommand = Dashboard.getAutoProgram();
 		// If an autonomous program is selected (not null), start the selected program. - Tyler 01/10/18
-		//if (autoCommand != null) {
-			//autoCommand.start();
-		//}
-		//new SpitWaitSpit();
-		System.out.println("Starting Auto");
-		Command spit = new SpitWaitSpit();
-		spit.start();
-=======
-		//autoCommand = Dashboard.getAutoProgram(); 
-		// If an autonomous program is selected (not null), start the selected program. - Tyler 01/10/18
-		//if (autoCommand != null) {
-		//	autoCommand.start();
-		//	}
-		
-		
-		// ^^^^^^^^^^ THIS SHOULD WORK FINE ONCE WE HAVE THE WHOLE SHEBANG READY
-		// what is below wasn't working because we need to have the command object ready and .start() it
-		
-		System.out.println("hi");
-		Scheduler.getInstance().removeAll();
-		//new RightAngle();
-		//RtAngle.start();
-	
-		Command auto = new MiddleSwitch();
-		//new PIDdrive(3,0,0,36); // P, I, D, distance set-point in inches
-		auto.start();
-		//Final P,I, and D Values - 0.03, 0.006, 0.07 Tyler 02/10
-		//new PIDRotate(0.03,0.006,0.07,45);
->>>>>>> drivesystem-only
+		if (autoCommand != null) {
+			autoCommand.start();
+		}
 	}
 
 	/**
@@ -151,16 +114,10 @@ public class Robot extends TimedRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		
-		//if (autoCommand != null) {
-			//autoCommand.cancel();
-		//}
+		if (autoCommand != null) {
+			autoCommand.cancel();
+		}
 		
-<<<<<<< HEAD
-		//new SpitWaitSpit();
-=======
-		// Drive();
-
->>>>>>> drivesystem-only
 	}
 
 	/**
