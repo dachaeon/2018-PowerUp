@@ -16,8 +16,8 @@ public class Dashboard {
 	
 	// Preferences variables to be edited in the SmartDashboard. - Tyler 01/10/18
 	// public static double elevatorSpeed; 
-	public static double ScaleHeight = -39900;
-	public static double SwitchHeight = 8000;
+	public static double ScaleHeight = 39900;
+	public static double SwitchHeight = 13000;
 	public static double ExchangeHeight;
 	public static double RestHeight = 0;
 	public double rotate_kP;
@@ -47,10 +47,11 @@ public class Dashboard {
 	public static void addAutoChooser(){
 		autoChooser = new SendableChooser<Command>();
 		// Make the default auto program Middle Switch. Might change to Cross Line. - Tyler 01/10/18
-		autoChooser.addDefault("Default Program: Cross Line", new PIDdrive(3,3,0,125));
+		autoChooser.addDefault("Default Program: Cross Line", new PIDdrive(3,0,0,125));
 		autoChooser.addObject("Middle Switch", new MiddleSwitch());
 		autoChooser.addObject("Left Switch", new LeftSwitch());
 		autoChooser.addObject("Right Switch", new RightSwitch());
+		autoChooser.addObject("TestElevatePID", new TestAuto());
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 		
 	}

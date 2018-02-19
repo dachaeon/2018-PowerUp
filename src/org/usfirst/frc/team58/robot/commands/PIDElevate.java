@@ -9,10 +9,13 @@ import org.usfirst.frc.team58.robot.Robot;
 public class PIDElevate extends Command {	
 	
 	double height; // in inches!
+	double timeout = 5000;
+	long startTime;
 	
 	public PIDElevate(double height) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_Elevator);
+		
 		this.height = height;
 	}
 
@@ -20,6 +23,7 @@ public class PIDElevate extends Command {
 	@Override
 	protected void initialize() {
 		Robot.m_Elevator.PIDControl(height);
+		startTime = System.currentTimeMillis();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -31,7 +35,13 @@ public class PIDElevate extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() { // Add code to determine if PID loop is finished
-		return false;
+		if (System.currentTimeMillis() >= startTime + timeout) {
+			System.out.println("elevation timed out");
+			return true;
+		} else {
+			System.out.println("still holding!");
+			return false;
+		}
 	}
 
 	// Called once after isFinished returns true

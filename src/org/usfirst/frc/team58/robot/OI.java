@@ -60,10 +60,10 @@ public class OI {
 	public JoystickButton SpitOutCube = new JoystickButton(operator, 9);
 	
 	public OI() {
-		ScaleHeight.whenPressed(new PIDElevate(Dashboard.ScaleHeight));
+		ScaleHeight.whenPressed(new ElevateTime(500));
 		SwitchHeight.whenPressed(new PIDElevate(Dashboard.SwitchHeight));
-		ExchangeHeight.whenPressed(new PIDElevate(Dashboard.ExchangeHeight));
-		RestHeight.whenPressed(new PIDElevate(Dashboard.RestHeight));
+		//ExchangeHeight.whenPressed(new PIDElevate(Dashboard.ExchangeHeight));
+		//RestHeight.whenPressed(new PIDElevate(Dashboard.RestHeight));
 		Climb.whileHeld(new Climb());
 		RearElevateUP.whileHeld(new Lift(0.3));
 		RearElevateDOWN.whileHeld(new Lift(-0.3));
