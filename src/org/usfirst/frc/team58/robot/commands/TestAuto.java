@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 public class TestAuto extends CommandGroup {
 	public TestAuto() {
 		addParallel(new PIDElevate(Dashboard.ScaleHeight));
+		addParallel(new ForwardNSpit());
 		//addParallel(new ForwardNSpit());
 	}
 }

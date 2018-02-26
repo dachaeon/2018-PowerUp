@@ -58,7 +58,7 @@ public class Robot extends TimedRobot {
 		
 		// This line creates a USB camera (integer 0) and starts streaming to the SmartDashboard.
 		// We can create more with different integers as needed. - Tyler 01/13/18
-		//CameraServer.getInstance().startAutomaticCapture();
+		CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	/**
@@ -89,12 +89,14 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		Robot.m_DriveTrain.zeroEncoders();
+		
 		// Get the game data string. (Ex: "LRL") - Tyler 01/10/18
-		//gameData = DriverStation.getInstance().getGameSpecificMessage(); 
-		gameData = "LLL";
+		gameData = DriverStation.getInstance().getGameSpecificMessage(); 
+		
 		// Set the autonomous command to the one selected in the dashboard. - Tyler 01/10/18
 		autoCommand = Dashboard.getAutoProgram();
-		Robot.m_DriveTrain.zeroEncoders();
+		
 		// If an autonomous program is selected (not null), start the selected program. - Tyler 01/10/18
 		if (autoCommand != null) {
 			autoCommand.start();

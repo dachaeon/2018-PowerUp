@@ -11,8 +11,10 @@ public class Dashboard {
 	
 	// Autonomous variables for the autonomous mode chooser. - Tyler 01/10/18
 	static Command autoCommand;
+	static String autoChoice;
 	public static Preferences prefs;
-	static SendableChooser<Command> autoChooser;
+	static SendableChooser<String> autoChooser;
+	
 	
 	// Preferences variables to be edited in the SmartDashboard. - Tyler 01/10/18
 	// public static double elevatorSpeed; 
@@ -45,22 +47,36 @@ public class Dashboard {
 	
 	// Choose autonomous mode from SmartDashboard before match begins. - Tyler 01/10/18
 	public static void addAutoChooser(){
-		autoChooser = new SendableChooser<Command>();
+		autoChooser = new SendableChooser<String>();
 		// Make the default auto program Middle Switch. Might change to Cross Line. - Tyler 01/10/18
-		autoChooser.addDefault("Default Program: Cross Line", new PIDdrive(3,0,0,125));
-		autoChooser.addObject("Middle Switch", new MiddleSwitch());
-		autoChooser.addObject("Left Switch", new LeftSwitch());
-		autoChooser.addObject("Right Switch", new RightSwitch());
-		autoChooser.addObject("TestElevatePID", new TestAuto());
+		autoChooser.addDefault("Default Program: Cross Line", "Cross Line");
+		autoChooser.addObject("Middle Switch", "Middle Switch");
+		autoChooser.addObject("Left Switch", "Left Switch");
+		autoChooser.addObject("Right Switch", "Right Switch");
+		autoChooser.addObject("TestElevatePID", "Test ElevatePID");
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 		
 	}
 	
 	// Get the autonomous program from the chooser on the Smart Dashboard. - Tyler 01/10/18
 	public static Command getAutoProgram() {
-		autoCommand = autoChooser.getSelected();
+		autoChoice = autoChooser.getSelected();
+		autoBuild(autoChoice);
 		return autoCommand;
 	}
 	
-	
+	public static void autoBuild(String autoChoice) {
+		switch(autoChoice){
+			case "Middle Switch" : autoCommand = new MiddleSwitch();
+				break;
+			case "Right Switch" : autoCommand = new RightSwitch();
+				break;
+			case "Left Switch" : autoCommand = new LeftSwitch();
+				break;
+			case "Test Elevate PID" : autoCommand = new TestAuto();
+			break;
+			default : autoCommand = new PIDdrive(3, 0, 0, 125);
+			break;
+		}
+	}
 }

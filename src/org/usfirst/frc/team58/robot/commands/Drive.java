@@ -46,10 +46,9 @@ public class Drive extends Command {
 			turnValue = 0;
 		}
 		
-		// Determine if Boost should be on
-		if (boostValue >= 0.75) {
+		if(boostValue >= .75){
 			boostOn = true;
-		}
+    	}
 		
 		// Send values to Drive Train subsystem -- only if a PID command is not enabled
 		Robot.m_DriveTrain.drive(moveValue, turnValue, false);

@@ -20,7 +20,7 @@ public class Grabber extends Subsystem {
 	
 	private WPI_VictorSPX m_RightMotor;
 	private WPI_VictorSPX m_LeftMotor;
-	//private Solenoid m_releaseSolenoid;
+	private Solenoid m_releaseSolenoid;
 	
 	
 	public Grabber() {
@@ -28,7 +28,7 @@ public class Grabber extends Subsystem {
 		m_RightMotor = new WPI_VictorSPX(RobotMap.rightGrabber); 
 		m_LeftMotor = new WPI_VictorSPX(RobotMap.leftGrabber);
 		m_LeftMotor.setInverted(true);
-		//m_releaseSolenoid = new Solenoid(2); // not using now
+		m_releaseSolenoid = new Solenoid(0); // not using now
 		
 		// Add encoders -- I guess not using?
 		//m_RightMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
@@ -43,7 +43,7 @@ public class Grabber extends Subsystem {
 	}
 	 
 	public void release (boolean releaseActivate) {
-		//m_releaseSolenoid.set (releaseActivate);
+		m_releaseSolenoid.set (releaseActivate);
 	}
 	
 	

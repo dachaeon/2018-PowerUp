@@ -52,18 +52,19 @@ public class Grab extends Command {
 		}
 		
 		// determine if grabber should be open
-		//if (releaseValue > 0.75) {
-			//releaseActivate = true;
-		//}
+		if (releaseValue > 0.75) {
+			releaseActivate = true;
+		}
 		
 		// send values to subsystem
 		if (turnCubeValue == 0) {
-			Robot.m_Grabber.grabWheels(moveValue);
+			Robot.m_Grabber.grabWheels(-moveValue);
 		} else {
-			Robot.m_Grabber.turnCube(turnCubeValue/2);
+			Robot.m_Grabber.turnCube(-turnCubeValue/2);
 		}
 		// this runs independent of grab wheels / turn cube
-		//Robot.m_Grabber.release(releaseActivate);
+		
+		Robot.m_Grabber.release(releaseActivate);
 	}
 
 
