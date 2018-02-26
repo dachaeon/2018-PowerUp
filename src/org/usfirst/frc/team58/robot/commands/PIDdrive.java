@@ -14,6 +14,9 @@ public class PIDdrive extends Command {
 	
 	private double nu_dist;
 	private PIDController c;
+	private double p = 3;
+	private double i = 0;
+	private double d = 0;
 	
     private PIDSource source = new PIDSource() {
     	PIDSourceType t = null;
@@ -42,24 +45,29 @@ public class PIDdrive extends Command {
     };
     
 
-	public PIDdrive(double p, double i, double d, double distance) {
-		//require drivetrain -- zero encoders
+	public PIDdrive(double distance, double maxSpeed) {
+		
+		// Require Drivetrain
 		requires(Robot.m_DriveTrain);
+		// Stop any driving
 		Robot.m_DriveTrain.drive(0, 0, false);
+		// Zero encoders
 		Robot.m_DriveTrain.zeroEncoders();
 		
-		// access controller
+		// Access controller
 		source.setPIDSourceType(PIDSourceType.kDisplacement);
 		c = new PIDController(p, i, d, source, output);
 		
-		// convert setpoint distance to native units for encoders
+		// Convert the setpoint distance to native units for encoders
 		nu_dist = (distance*4096)/(6*Math.PI);
+		// Set setpoint
 		c.setSetpoint(nu_dist);		
+		// Set tolerance
 		c.setAbsoluteTolerance((2048)/(6*Math.PI));
-		// set minimum and maximum inputs
-		c.setOutputRange(-0.5, 0.5);
+		// Set minimum and maximum inputs
+		c.setOutputRange(-(maxSpeed), (maxSpeed));
 		
-		// set timeout to 15 sec
+		// Set timeout to 15 sec
 		//setTimeout(15);
 		
 		System.out.println("PID drive constructed");

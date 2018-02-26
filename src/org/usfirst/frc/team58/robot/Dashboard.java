@@ -75,7 +75,7 @@ public class Dashboard {
 				break;
 			case "Test Elevate PID" : autoCommand = new TestAuto();
 			break;
-			default : autoCommand = new PIDdrive(3, 0, 0, 125);
+			default : autoCommand = new PIDdrive(125, 0.75);
 			break;
 		}
 	}
