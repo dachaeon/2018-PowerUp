@@ -8,6 +8,9 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 public class PIDRotate extends PIDCommand {
 
 	PIDController c;
+	private double p = 0.03; 
+	private double i = 0.006;
+	private double d = 0.07;
 	
 	public PIDRotate(double p, double i, double d, double angle){
 		super(p, i, d);
