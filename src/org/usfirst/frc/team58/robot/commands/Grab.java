@@ -64,7 +64,7 @@ public class Grab extends Command {
 		}
 		// this runs independent of grab wheels / turn cube
 		
-		Robot.m_Grabber.release(releaseActivate);
+		Robot.m_Grabber.release(releaseActivate); 
 	}
 
 

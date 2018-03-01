@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 
 public class ForwardNSpit extends CommandGroup {
 	public ForwardNSpit() {
-		addSequential(new PIDdrive(18, 0.5));
+		addSequential(new PIDdrive(30, 0.5));
 		//addSequential(new ResetWait(250)); // Wait 1000ms
 		//addParallel(new ElevateTime(1000));
 		addSequential(new SpitCube());

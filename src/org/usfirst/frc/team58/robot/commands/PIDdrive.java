@@ -14,6 +14,7 @@ public class PIDdrive extends Command {
 	
 	private double nu_dist;
 	private PIDController c;
+	private PIDController a;
 	private double p = 3;
 	private double i = 0;
 	private double d = 0;
@@ -97,12 +98,12 @@ public class PIDdrive extends Command {
 		if (Math.abs(angle)<2) {
 			angle = 0;
 		} else {
-			angle = angle/30; // scale down angle to make it a small correction. Change scale factor as needed - Emma
+			angle = angle*0.02; // scale down angle to make it a small correction. Change scale factor as needed - Emma
 		}
 		
 		System.out.println("output = " + output + "angle = " + angle);
 		// send to drive train
-		Robot.m_DriveTrain.drive(-output, 0, true); // has to be negative output
+		Robot.m_DriveTrain.drive(-output,-angle , true); // has to be negative output
 		
 		//if (isFinished()) {
 			//end();

@@ -93,13 +93,13 @@ public class DriveTrain extends Subsystem {
 	private void config() {
 		m_FrontLeftMotor.configNominalOutputForward(0, 10);
 		m_FrontLeftMotor.configNominalOutputReverse(0, 10);
-		m_FrontLeftMotor.configPeakOutputForward(1, 10);
+		m_FrontLeftMotor.configPeakOutputForward(0.95, 10);
 		m_FrontLeftMotor.configPeakOutputReverse(-1, 10);
 		
 		m_FrontRightMotor.configNominalOutputForward(0, 10);
 		m_FrontRightMotor.configNominalOutputReverse(0, 10);
 		m_FrontRightMotor.configPeakOutputForward(1, 10);
-		m_FrontRightMotor.configPeakOutputReverse(-1, 10);
+		m_FrontRightMotor.configPeakOutputReverse(-0.85, 10);
 	}
 	
 	public double getEncoders() {

@@ -9,12 +9,11 @@ public class RightSwitch extends CommandGroup {
 	public RightSwitch() {
 		if (Robot.gameData != null ) {
 		if(Robot.gameData.charAt(0) == 'R') {
-			addSequential(new PIDdrive(168, 0.75));
+			addSequential(new PIDdrive(152, 0.5));
 			addSequential(new ResetWait(500)); // Wait 1000ms
 			addSequential(new PIDRotate(0.03,0.006,0.07,-90));
-			//addSequential(new PIDElevate(Dashboard.SwitchHeight));
-			addSequential(new PIDdrive(12, 0.75));
-			addSequential(new SpitCube());
+			addSequential(new PIDElevate(Dashboard.SwitchHeight));
+			addParallel(new ForwardNSpit());
 		} else if(Robot.gameData.charAt(0) == 'L') {
 			addSequential(new PIDdrive(192,0.75));
 			addSequential(new ResetWait(500)); // Wait 1000ms
