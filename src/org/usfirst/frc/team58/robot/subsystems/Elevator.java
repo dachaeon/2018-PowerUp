@@ -41,7 +41,7 @@ public class Elevator extends Subsystem {
 		m_ElevatorMotor.configAllowableClosedloopError(0, 500, 10);
 		
 		// Configure MotionMagic cruise velocity and acceleration
-		m_ElevatorMotor.configMotionCruiseVelocity(8000, 10); // Need to determine appropriate velocity and acceleration
+		m_ElevatorMotor.configMotionCruiseVelocity(10000, 10); // Need to determine appropriate velocity and acceleration
 		m_ElevatorMotor.configMotionAcceleration(2000, 10);
 		
 		// reduces current to X when it exceeds & for Z milliseconds -- added by Emma 2/3

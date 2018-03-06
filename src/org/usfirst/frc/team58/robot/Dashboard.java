@@ -19,7 +19,7 @@ public class Dashboard {
 	// Preferences variables to be edited in the SmartDashboard. - Tyler 01/10/18
 	// public static double elevatorSpeed; 
 	public static double ScaleHeight = 39900;
-	public static double SwitchHeight = 13000;
+	public static double SwitchHeight = 13500;
 	public static double ExchangeHeight;
 	public static double RestHeight = 0;
 	public double rotate_kP;
@@ -53,7 +53,8 @@ public class Dashboard {
 		autoChooser.addObject("Middle Switch", "Middle Switch");
 		autoChooser.addObject("Left Switch", "Left Switch");
 		autoChooser.addObject("Right Switch", "Right Switch");
-		autoChooser.addObject("TestElevatePID", "Test ElevatePID");
+		autoChooser.addObject("Right Scale", "Right Scale");
+		autoChooser.addObject("Left Scale", "Left Scale");
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 		
 	}
@@ -73,7 +74,9 @@ public class Dashboard {
 				break;
 			case "Left Switch" : autoCommand = new LeftSwitch();
 				break;
-			case "Test Elevate PID" : autoCommand = new TestAuto();
+			case "Right Scale" : autoCommand = new RightScale();
+			break;
+			case "Left Scale" : autoCommand = new LeftScale();
 			break;
 			default : autoCommand = new PIDdrive(125, 0.75);
 			break;

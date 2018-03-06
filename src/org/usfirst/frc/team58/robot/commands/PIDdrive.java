@@ -95,11 +95,7 @@ public class PIDdrive extends Command {
 	protected void usePIDOutput(double output) {
 		// get angle correction
 		double angle = Robot.m_DriveTrain.getAngle();
-		if (Math.abs(angle)<2) {
-			angle = 0;
-		} else {
-			angle = angle*0.02; // scale down angle to make it a small correction. Change scale factor as needed - Emma
-		}
+			angle = angle*0.08; // scale down angle to make it a small correction. Change scale factor as needed - Emma
 		
 		System.out.println("output = " + output + "angle = " + angle);
 		// send to drive train
