@@ -123,5 +123,9 @@ public class DriveTrain extends Subsystem {
 		PIDEnabled = b;
 	}
 	
+	public boolean isNavxCal() {
+		return !navx.isCalibrating();
+	}
+	
 }
 

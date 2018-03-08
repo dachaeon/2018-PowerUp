@@ -9,13 +9,13 @@ import org.usfirst.frc.team58.robot.Robot;
 public class PIDElevate extends Command {	
 	
 	double height; // in inches!
-	double timeout = 5000;
+	double timeout;
 	long startTime;
 	
-	public PIDElevate(double height) {
+	public PIDElevate(double height, double timeout) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.m_Elevator);
-		
+		this.timeout = timeout;
 		this.height = height;
 	}
 

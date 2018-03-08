@@ -14,7 +14,7 @@ public class RightSwitch extends CommandGroup {
 			addSequential(new PIDdrive(145, 0.75));
 			addSequential(new ResetWait(500)); // Wait 1000ms
 			addSequential(new PIDRotate(0.03,0.006,0.07,-90));
-			addParallel(new PIDElevate(Dashboard.SwitchHeight));
+			addParallel(new PIDElevate(Dashboard.SwitchHeight, 5000));
 			addParallel(new ForwardNSpit(-0.5));
 		} else if(Robot.gameData.charAt(0) == 'L') {
 			addSequential(new PIDdrive(192,0.75));

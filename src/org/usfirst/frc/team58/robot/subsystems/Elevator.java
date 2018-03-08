@@ -42,7 +42,7 @@ public class Elevator extends Subsystem {
 		
 		// Configure MotionMagic cruise velocity and acceleration
 		m_ElevatorMotor.configMotionCruiseVelocity(10000, 10); // Need to determine appropriate velocity and acceleration
-		m_ElevatorMotor.configMotionAcceleration(2000, 10);
+		m_ElevatorMotor.configMotionAcceleration(3000, 10);
 		
 		// reduces current to X when it exceeds & for Z milliseconds -- added by Emma 2/3
 		m_ElevatorMotor.configContinuousCurrentLimit(40, 0);

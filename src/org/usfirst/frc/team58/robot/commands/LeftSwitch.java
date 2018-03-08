@@ -14,7 +14,7 @@ public class LeftSwitch extends CommandGroup {
 			addSequential(new PIDdrive(145, 0.75));
 			addSequential(new ResetWait(1000)); // Wait 1000ms
 			addSequential(new PIDRotate(0.03,0.006,0.07, 70));
-			addParallel(new PIDElevate(Dashboard.SwitchHeight));
+			addParallel(new PIDElevate(Dashboard.SwitchHeight, 5000));
 			addParallel(new ForwardNSpit(-0.6));
 		}
 		if(Robot.gameData.charAt(0) == 'R') {
@@ -24,11 +24,11 @@ public class LeftSwitch extends CommandGroup {
 			addSequential(new PIDRotate(0.03,0.006,0.07,90));
 			addSequential(new ResetWait(500)); // Wait 1000ms
 			addSequential(new PIDdrive(192, 0.75));
-			addSequential(new ResetWait(500)); // Wait 1000ms
-			addSequential(new PIDRotate(0.03,0.006,0.07,90));
-			addSequential(new ResetWait(100));
-			addSequential(new PIDElevate(Dashboard.SwitchHeight));
-			addParallel(new ForwardNSpit(0.25));
+			//addSequential(new ResetWait(500)); // Wait 1000ms
+			//addSequential(new PIDRotate(0.03,0.006,0.07,90));
+			//addSequential(new ResetWait(100));
+			//addSequential(new PIDElevate(Dashboard.SwitchHeight));
+			//addParallel(new ForwardNSpit(0.25));
 		}
 	}
 	}

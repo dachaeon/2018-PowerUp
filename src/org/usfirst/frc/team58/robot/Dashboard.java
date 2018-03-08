@@ -51,10 +51,10 @@ public class Dashboard {
 		// Make the default auto program Middle Switch. Might change to Cross Line. - Tyler 01/10/18
 		autoChooser.addDefault("Default Program: Cross Line", "Cross Line");
 		autoChooser.addObject("Middle Switch", "Middle Switch");
-		autoChooser.addObject("Left Switch", "Left Switch");
-		autoChooser.addObject("Right Switch", "Right Switch");
-		autoChooser.addObject("Right Scale", "Right Scale");
-		autoChooser.addObject("Left Scale", "Left Scale");
+		autoChooser.addObject("Right Side", "Right Side");
+		autoChooser.addObject("Left Side", "Left Side");
+		autoChooser.addObject("Left Switch ONLY", "Left Switch");
+		autoChooser.addObject("Right Switch ONLY", "Right Switch");
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 		
 	}
@@ -74,12 +74,12 @@ public class Dashboard {
 				break;
 			case "Left Switch" : autoCommand = new LeftSwitch();
 				break;
-			case "Right Scale" : autoCommand = new RightScale();
-			break;
-			case "Left Scale" : autoCommand = new LeftScale();
-			break;
+			case "Right Side" : autoCommand = new RightSide();
+				break;
+			case "Left Side" : autoCommand = new LeftSide();
+				break;
 			default : autoCommand = new PIDdrive(125, 0.75);
-			break;
+				break;
 		}
 	}
 }

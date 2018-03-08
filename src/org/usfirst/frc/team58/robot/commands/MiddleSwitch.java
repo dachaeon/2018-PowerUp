@@ -12,28 +12,28 @@ public class MiddleSwitch extends CommandGroup {
 		if (Robot.gameData != null) {
 		if(Robot.gameData.charAt(0) == 'R') {
 			System.out.println("Got the switch on the right");
-			addSequential(new PIDdrive(36, 0.5)); //36
+			addSequential(new PIDdrive(36, 0.6)); //36
 			addSequential(new ResetWait(250)); // Wait 1000ms
 			addSequential(new PIDRotate(0.03,0.006,0.07,50));
 			addSequential(new ResetWait(250)); // Wait 1000ms
-			addSequential(new PIDdrive(65, 0.5)); //65
+			addSequential(new PIDdrive(60, 0.6)); //65
 			addSequential(new ResetWait(500)); // Wait 1000ms 
 			addSequential(new PIDRotate(0.03,0.006,0.07,-45));
-			//addSequential(new PIDElevate(Dashboard.SwitchHeight));
-			addSequential(new PIDdrive(6, 0.5));
+			addParallel(new PIDElevate(Dashboard.SwitchHeight, 5000));
+			addParallel(new ForwardNSpit(-0.5));
 			//addSequential(new SpitCube());
 			
 		} else if(Robot.gameData.charAt(0) == 'L') {
 			System.out.println("Got the switch on the left");
-			addSequential(new PIDdrive(36, 0.5));
+			addSequential(new PIDdrive(31, 0.75));
 			addSequential(new ResetWait(500)); // Wait 1000ms 
 			addSequential(new PIDRotate(0.03,0.006,0.07,-50));
 			addSequential(new ResetWait(250)); // Wait 1000ms
-			addSequential(new PIDdrive(65, 0.5));
-			addSequential(new ResetWait(250)); // Wait 1000ms 
-			addSequential(new PIDRotate(0.03,0.006,0.07,45)); 
-			//addSequential(new PIDElevate(Dashboard.SwitchHeight));
-			addSequential(new PIDdrive(6, 0.5));
+			addSequential(new PIDdrive(60, 0.75));
+			addSequential(new ResetWait(500));// Wait 1000ms 
+			addSequential(new PIDRotate(0.03,0.006,0.07,35)); 
+			addParallel(new PIDElevate(Dashboard.SwitchHeight, 5000));
+			addParallel(new ForwardNSpit(-0.5));
 			//addSequential(new SpitCube());
 		}
 		}

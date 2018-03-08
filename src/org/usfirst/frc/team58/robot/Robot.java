@@ -101,7 +101,6 @@ public class Robot extends TimedRobot {
 		if (autoCommand != null) {
 			autoCommand.start();
 		}
-		
 	}
 
 	/**
@@ -109,7 +108,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
+		if (m_DriveTrain.isNavxCal()) {
+			Scheduler.getInstance().run();
+		}
 	}
 
 	@Override
