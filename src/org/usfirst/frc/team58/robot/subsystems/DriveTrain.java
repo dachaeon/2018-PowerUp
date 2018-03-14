@@ -108,7 +108,14 @@ public class DriveTrain extends Subsystem {
 		System.out.println("left=" + left);
 		System.out.println("right=" + right);
 		//return distance in native units (4096/rev)
-		return ((left+right)/2);
+		if (Math.abs(left-right) < 1000 ) {
+			return ((left+right)/2);
+		} else if (left > right ) {
+			return left;
+		} else {
+			return right;
+		}
+		
 	}
 	
 	public double getAngle() {

@@ -21,7 +21,7 @@ public class LeftSwitch extends CommandGroup {
 			addSequential(new ResetWait(500)); // Wait 500ms
 			addSequential(new PIDdrive(210, 0.75)); // Drive forward 210 inches
 			addSequential(new ResetWait(500)); // Wait 500ms
-			addSequential(new PIDRotate(0.03,0.006,0.07,90)); // Turn 90 degrees
+			addSequential(new PIDRotate(0.03,0.006,0.07,70)); // Turn 90 degrees
 			addSequential(new ResetWait(500)); // Wait 500ms
 			addSequential(new PIDdrive(192, 0.75)); // Drive forward 192 inches
 		}

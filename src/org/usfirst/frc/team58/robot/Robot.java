@@ -39,7 +39,7 @@ public class Robot extends TimedRobot {
 	public static final Lifter m_Lifter
 			= new Lifter();
 	public static OI m_oi;
-	public static String gameData;
+	public static String gameData = null;
 
 
 	Command autoCommand;
@@ -93,6 +93,7 @@ public class Robot extends TimedRobot {
 		
 		// Get the game data string. (Ex: "LRL") - Tyler 01/10/18
 		gameData = DriverStation.getInstance().getGameSpecificMessage(); 
+		SmartDashboard.putString("Game Data", gameData);
 		
 		// Set the autonomous command to the one selected in the dashboard. - Tyler 01/10/18
 		autoCommand = Dashboard.getAutoProgram();

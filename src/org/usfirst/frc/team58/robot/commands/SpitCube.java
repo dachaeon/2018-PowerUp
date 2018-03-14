@@ -24,7 +24,7 @@ public class SpitCube extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.m_Grabber.grabWheels(1);
+		Robot.m_Grabber.grabWheels(0.75);
 		Robot.m_Grabber.release(true);
 		
 		// ends when duration is completed
