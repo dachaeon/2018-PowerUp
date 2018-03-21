@@ -14,24 +14,24 @@ public class MiddleSwitch extends CommandGroup {
 			System.out.println("Got the switch on the right");
 			addSequential(new PIDdrive(31, 0.6)); //36 to 31 at bridgewater 2:55PM 
 			addSequential(new ResetWait(250)); // Wait 1000ms
-			addSequential(new PIDRotate(0.03,0.006,0.07,50));
+			addSequential(new PIDRotate(0.02,0,0.01,50));
 			addSequential(new ResetWait(250)); // Wait 1000ms
 			addSequential(new PIDdrive(60, 0.6)); //65
 			addSequential(new ResetWait(1000)); // Wait 1000ms 
-			addSequential(new PIDRotate(0.03,0.006,0.07,-40));
+			addSequential(new PIDRotate(0.02,0,0.01,-40));
 			addParallel(new PIDElevate(Dashboard.SwitchHeight, 5000));
 			addParallel(new ForwardNSpit(-0.4));
 			//addSequential(new SpitCube());
 			
 		} else if(Robot.gameData.charAt(0) == 'L') {
 			System.out.println("Got the switch on the left");
-			addSequential(new PIDdrive(31, 0.75));
+			addSequential(new PIDdrive(31, 0.6));
 			addSequential(new ResetWait(500)); // Wait 1000ms 
-			addSequential(new PIDRotate(0.03,0.006,0.07,-50));
+			addSequential(new PIDRotate(0.02,0,0.01,-55));
 			addSequential(new ResetWait(250)); // Wait 1000ms
-			addSequential(new PIDdrive(60, 0.75));
+			addSequential(new PIDdrive(60, 0.6));
 			addSequential(new ResetWait(1000));// Wait 1000ms 
-			addSequential(new PIDRotate(0.03,0.006,0.07, 30)); 
+			addSequential(new PIDRotate(0.02,0,0.01, 40)); 
 			addParallel(new PIDElevate(Dashboard.SwitchHeight, 5000));
 			addParallel(new ForwardNSpit(-0.4));
 			//addSequential(new SpitCube());

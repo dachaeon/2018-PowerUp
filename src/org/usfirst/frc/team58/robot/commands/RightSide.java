@@ -11,7 +11,7 @@ public class RightSide extends CommandGroup {
 			if(Robot.gameData.charAt(1) == 'R') {
 				addSequential(new RightScale());
 			} else {
-				addSequential(new PIDdrive(125, 0.75)); // changed to cross line for SEMass
+				addSequential(new RightSwitch());
 			}
 	}	
 }

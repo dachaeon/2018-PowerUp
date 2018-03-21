@@ -34,7 +34,7 @@ public class Elevator extends Subsystem {
 		
 		// Configure PID constants
 		m_ElevatorMotor.selectProfileSlot(0, 0); // Need to determine PID constants
-		m_ElevatorMotor.config_kP(0,  1,  10);
+		m_ElevatorMotor.config_kP(0,  2,  10);
 		m_ElevatorMotor.config_kI(0,  0,  10);
 		m_ElevatorMotor.config_kD(0,  1,  10);
 		//m_ElevatorMotor.config_kF(0, 1, 10);

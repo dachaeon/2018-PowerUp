@@ -11,6 +11,7 @@ public class PIDRotate extends PIDCommand {
 	private double p = 0.03; 
 	private double i = 0.006;
 	private double d = 0.07;
+	private double start;
 	
 	public PIDRotate(double p, double i, double d, double angle){
 		super(p, i, d);
@@ -25,6 +26,7 @@ public class PIDRotate extends PIDCommand {
 	
 	@Override
 	protected void initialize() {
+		start = System.currentTimeMillis();
 		Robot.m_DriveTrain.zeroNavx();
 		Robot.m_DriveTrain.enableDisablePID(true);
 		c.enable();
@@ -50,7 +52,10 @@ public class PIDRotate extends PIDCommand {
 		if (c.onTarget()) {
 			System.out.println("finished");
 			return true;
-		} else {
+		} else if (System.currentTimeMillis() >= start + 500) {
+			return true;
+		}
+		else {
 			System.out.println("not there yet");
 			return false;
 		}
