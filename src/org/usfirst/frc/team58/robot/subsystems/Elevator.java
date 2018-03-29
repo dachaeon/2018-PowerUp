@@ -58,7 +58,7 @@ public class Elevator extends Subsystem {
 	
 	public void variableControl(double moveValue) {
 		if (moveValue > 0) {
-			moveValue = moveValue*0.75; // down speed limit -- negative is UP
+			moveValue = moveValue*0.45; // down speed limit -- negative is UP
 		}
 		m_ElevatorMotor.set(-moveValue); 
 		

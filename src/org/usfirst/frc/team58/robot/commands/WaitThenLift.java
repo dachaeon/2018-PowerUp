@@ -5,10 +5,9 @@ import org.usfirst.frc.team58.robot.Robot;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitForChildren;
 
-public class GoToScale extends CommandGroup {
-	public GoToScale() {
+public class WaitThenLift extends CommandGroup {
+	public WaitThenLift() {
+		addSequential(new Wait(1000));
 		addParallel(new PIDElevate(Dashboard.ScaleHeight, 3500));
-		addParallel(new ForwardNSpit(-0.47));
-		//addParallel(new ForwardNSpit());
 	}
 }

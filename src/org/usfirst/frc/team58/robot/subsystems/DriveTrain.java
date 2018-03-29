@@ -29,6 +29,7 @@ public class DriveTrain extends Subsystem {
 	private Solenoid m_SpeedSolenoid;
 	private AHRS navx;
 	boolean PIDEnabled;
+	public double distanceTraveled;
 	
 	public DriveTrain() {
 		// not using PID at start;
@@ -107,6 +108,8 @@ public class DriveTrain extends Subsystem {
 		double right =  m_FrontRightMotor.getSelectedSensorPosition(0);
 		System.out.println("left=" + left);
 		System.out.println("right=" + right);
+		distanceTraveled = ((left+right/2)*4096)/(6*Math.PI);
+		System.out.println("Distance Traveled: " + distanceTraveled + " inches");
 		//return distance in native units (4096/rev)
 		if (Math.abs(left-right) < 1000 ) {
 			return ((left+right)/2);
@@ -119,7 +122,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public double getAngle() {
-		return navx.getAngle();
+		return navx.getYaw(); //changed from get angle
 	}
 	
 	public void zeroNavx() {

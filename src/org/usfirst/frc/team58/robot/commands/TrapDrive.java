@@ -44,6 +44,7 @@ public class TrapDrive extends Command {
 	@Override
 	protected void execute() {	
 		encoderValue = Robot.m_DriveTrain.getEncoders();
+		
 		double angle = Robot.m_DriveTrain.getAngle();
 		angle = -angle*0.1; // scale down angle to make it a small correction. Change scale factor as needed - Emma
 		double nu_range = (nu_dist) * 0.15;

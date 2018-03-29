@@ -50,13 +50,13 @@ public class OI {
 	public Joystick operator = new Joystick(RobotMap.operator);
 
 	// Mapping buttons for Elevator. Added by Emma/Joe 01/13/18
-	public JoystickButton ScaleHeight = new JoystickButton (operator, RobotMap.y);
-	public JoystickButton SwitchHeight = new JoystickButton (operator, RobotMap.b);
-	public JoystickButton ExchangeHeight = new JoystickButton (operator, RobotMap.x);
-	public JoystickButton RestHeight = new JoystickButton (operator, RobotMap.a);
-	public JoystickButton Climb = new JoystickButton (operator, RobotMap.rightBumper);
-	public JoystickButton RearElevateUP = new JoystickButton (driver, RobotMap.rightBumper);
-	public JoystickButton RearElevateDOWN = new JoystickButton (driver, RobotMap.leftBumper);
+	//public JoystickButton ScaleHeight = new JoystickButton (operator, RobotMap.y);
+	//public JoystickButton SwitchHeight = new JoystickButton (operator, RobotMap.b);
+	//public JoystickButton ExchangeHeight = new JoystickButton (operator, RobotMap.x);
+	//public JoystickButton RestHeight = new JoystickButton (operator, RobotMap.a);
+	public JoystickButton Climb = new JoystickButton (operator, RobotMap.y);
+	public JoystickButton RearElevateUP = new JoystickButton (operator, RobotMap.rightBumper);
+	public JoystickButton RearElevateDOWN = new JoystickButton (operator, RobotMap.leftBumper);
 	public JoystickButton SpitOutCube = new JoystickButton(operator, 9);
 	
 	public OI() {
