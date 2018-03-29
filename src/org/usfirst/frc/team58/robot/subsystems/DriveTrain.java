@@ -61,6 +61,7 @@ public class DriveTrain extends Subsystem {
 
 		// add navx
 		navx = new AHRS(SPI.Port.kMXP);
+		navx.reset();
 		
 	}
 
