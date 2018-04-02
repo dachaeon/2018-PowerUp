@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 
 public class GoToScale extends CommandGroup {
 	public GoToScale() {
-		addParallel(new PIDElevate(Dashboard.ScaleHeight, 3500));
+		addParallel(new PIDElevate(Dashboard.ScaleHeight, 3000));
 		addParallel(new ForwardNSpit(-0.47));
 		//addParallel(new ForwardNSpit());
 	}

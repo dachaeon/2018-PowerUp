@@ -8,6 +8,6 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 public class WaitThenLift extends CommandGroup {
 	public WaitThenLift() {
 		addSequential(new Wait(1000));
-		addParallel(new PIDElevate(Dashboard.ScaleHeight, 3500));
+		addParallel(new PIDElevate(Dashboard.ScaleHeight/2, 3000));
 	}
 }

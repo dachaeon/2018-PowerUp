@@ -14,16 +14,16 @@ public class Climb extends Command{
 	double maxClimberCurrent;
 	double climberSpeed;
 	
-	public Climb() {
+	public Climb(double climbSpeed) {
 		
         // Use requires() here to declare subsystem dependencies
     	requires(Robot.m_Climber);
- 
+    	this.climberSpeed = climbSpeed;
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	climberSpeed = 1; //
     	Robot.m_Climber.climb(climberSpeed);
     }
 
@@ -49,6 +49,6 @@ public class Climb extends Command{
     // subsystems is scheduled to run
     protected void interrupted() {
     	// turn off climber
-    	Robot.m_Climber.climb(0);
+    	end();
     }
 }

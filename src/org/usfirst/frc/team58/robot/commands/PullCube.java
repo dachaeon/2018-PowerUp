@@ -12,7 +12,7 @@ public class PullCube extends Command {
 	
 	public PullCube () {
 		requires(Robot.m_Grabber);
-		duration = 2000; //ot sure how long, approx 1 second enough?
+		duration = 3000; //ot sure how long, approx 1 second enough?
 	}
 	
 	@Override

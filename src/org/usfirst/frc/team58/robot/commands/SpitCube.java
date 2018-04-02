@@ -12,7 +12,7 @@ public class SpitCube extends Command {
 	
 	public SpitCube () {
 		requires(Robot.m_Grabber);
-		duration = 2000; //ot sure how long, approx 1 second enough?
+		duration = 1000; //ot sure how long, approx 1 second enough?
 	}
 	
 	@Override
