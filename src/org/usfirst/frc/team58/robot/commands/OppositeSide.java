@@ -23,7 +23,7 @@ public class OppositeSide extends CommandGroup {
 			addSequential(new TurnToAngle(75)); // Turn -90 degrees
 			addSequential(new ResetWait(10)); // Wait 500ms- reduced to 10ms because we added the PID Elevate after
 			addSequential(new PIDElevate(Dashboard.SwitchHeight, 750));
-			addSequential(new TrapDrive(188));  
+			addSequential(new TrapDrive(193));  
 			addSequential(new ResetWait(250));
 			addSequential(new TurnToAngle(-70));
 			addSequential(new GoToScale());

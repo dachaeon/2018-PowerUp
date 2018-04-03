@@ -58,7 +58,8 @@ public class OI {
 	public JoystickButton ReverseClimb = new JoystickButton (operator, RobotMap.a);
 	public JoystickButton RearElevateUP = new JoystickButton (operator, RobotMap.rightBumper);
 	public JoystickButton RearElevateDOWN = new JoystickButton (operator, RobotMap.leftBumper);
-	public JoystickButton SpitOutCube = new JoystickButton(operator, 9);
+	public JoystickButton BrakeClimb = new JoystickButton(operator, RobotMap.b);
+	//public JoystickButton SpitOutCube = new JoystickButton(operator, 9);
 	
 	public OI() {
 		//ScaleHeight.whenPressed(new ElevateTime(500));
@@ -67,9 +68,11 @@ public class OI {
 		//RestHeight.whenPressed(new PIDElevate(Dashboard.RestHeight));
 		Climb.whileHeld(new Climb(1.0));
 		ReverseClimb.whileHeld(new Climb(-0.5));
+		BrakeClimb.whileHeld(new Climb(0.2));
 		RearElevateUP.whileHeld(new Lift(0.27));
 		RearElevateDOWN.whileHeld(new Lift(-0.2));
-		SpitOutCube.whenPressed(new SpitCube());
+		
+		//SpitOutCube.whenPressed(new SpitCube());
 		
 	}
 	
