@@ -63,6 +63,8 @@ public class DriveTrain extends Subsystem {
 		navx = new AHRS(SPI.Port.kMXP);
 		navx.reset();
 		
+		zeroEncoders();
+		
 	}
 
 	public void initDefaultCommand() {
@@ -80,7 +82,7 @@ public class DriveTrain extends Subsystem {
 		SmartDashboard.putNumber("right drive velocity", m_FrontRightMotor.getSelectedSensorVelocity(0));
 		SmartDashboard.putNumber("left drive position", m_FrontLeftMotor.getSelectedSensorPosition(0));
 		SmartDashboard.putNumber("left drive velocity", m_FrontLeftMotor.getSelectedSensorVelocity(0));
-		
+		getEncoders();
 	}
 	 
 	public void boost (boolean boostOn) {

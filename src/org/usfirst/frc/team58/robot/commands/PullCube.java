@@ -12,7 +12,7 @@ public class PullCube extends Command {
 	
 	public PullCube () {
 		requires(Robot.m_Grabber);
-		duration = 3000; //ot sure how long, approx 1 second enough?
+		duration = 1358; //ot sure how long, approx 1 second enough?
 	}
 	
 	@Override
@@ -48,6 +48,8 @@ public class PullCube extends Command {
 	@Override
 	protected void end() {
 		Robot.m_Grabber.grabWheels(0);
+		Robot.m_Grabber.release(false);
+
 	}
 	
 	@Override

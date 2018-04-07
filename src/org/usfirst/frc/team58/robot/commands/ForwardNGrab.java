@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class ForwardNGrab extends CommandGroup {
 	public ForwardNGrab() {
-		addParallel(new PIDdrive(30.58, 0.858));
+		addParallel(new PIDdrive(20.58, 0.858));
 		addParallel(new PullCube());
 	}
 }

@@ -69,7 +69,7 @@ public class Dashboard {
 	
 	public static void autoBuild(String autoChoice) {
 		switch(autoChoice){
-			case "Middle Switch" : autoCommand = new MiddleSwitch();
+			case "Middle Switch" : autoCommand = new Middle2Cube();
 				break;
 			case "Right Switch" : autoCommand = new RightSwitch();
 				break;
@@ -83,8 +83,8 @@ public class Dashboard {
 				break;
 			case "Scale From Left" : autoCommand = new ScaleFromLeft();
 				break;
-			//default : autoCommand = new PIDdrive(125, 0.75);
-			default: autoCommand = new TurnToAngle(65);				
+			default : autoCommand = new PIDdrive(125, 0.75);
+			//default: autoCommand = new TurnToAngle(65);				
 				break;
 		}
 	}

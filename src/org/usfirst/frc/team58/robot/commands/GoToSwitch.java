@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 
 public class GoToSwitch extends CommandGroup {
 	public GoToSwitch() {
-		addParallel(new PIDElevate(Dashboard.SwitchHeight, 5000));
-		addParallel(new ForwardNSpit(-0.4));
+		addParallel(new PIDElevate(Dashboard.SwitchHeight, 2000));
+		addParallel(new ForwardNSpit(-0.6));
 		//addParallel(new ForwardNSpit());
 	}
 }

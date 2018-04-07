@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 
 public class ForwardNSpit extends CommandGroup {
 	public ForwardNSpit(double speed) {
-		addSequential(new ResetWait(1400));
+		addSequential(new ResetWait(1000)); //Was 1400 before 2 cube middle s
 		addSequential(new TimeDrive(2000, speed)); //was 30
 		//addSequential(new ResetWait(250)); // Wait 1000ms
 		//addParallel(new ElevateTime(1000));

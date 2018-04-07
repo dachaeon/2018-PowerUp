@@ -62,7 +62,7 @@ public class Elevator extends Subsystem {
 		}
 		m_ElevatorMotor.set(-moveValue); 
 		
-		System.out.println(getEncoder()+"   "+ moveValue);
+	//	System.out.println(getEncoder()+"   "+ moveValue);
 	}
 	
 	public void PIDControl (double height) {
