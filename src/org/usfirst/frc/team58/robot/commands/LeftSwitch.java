@@ -15,7 +15,7 @@ public class LeftSwitch extends CommandGroup {
 			addSequential(new ResetWait(1000)); // Wait 1000ms
 			addSequential(new TurnToAngle(70)); // Turn 70 degrees
 			addParallel(new PIDElevate(Dashboard.SwitchHeight, 5000)); // Raise elevator up to switch height
-			addParallel(new ForwardNSpit(-0.6)); // Drive forward, spit, and back up
+			addParallel(new ForwardNSpit(-0.6, 750)); // Drive forward, spit, and back up
 		}
 		if(Robot.gameData.charAt(0) == 'R') {
 			addSequential(new ResetWait(500)); // Wait 500ms

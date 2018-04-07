@@ -36,7 +36,7 @@ public class MiddleSwitch extends CommandGroup {
 			addSequential(new ResetWait(1000));// Wait 1000ms 
 			addSequential(new PIDRotate(0.02,0,0.01, 40)); 
 			addParallel(new PIDElevate(Dashboard.SwitchHeight, 5000));
-			addParallel(new ForwardNSpit(-0.4));
+			addParallel(new ForwardNSpit(-0.4, 750));
 			//addSequential(new SpitCube());
 		}
 		}

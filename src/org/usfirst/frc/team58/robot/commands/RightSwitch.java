@@ -15,7 +15,7 @@ public class RightSwitch extends CommandGroup {
 			addSequential(new ResetWait(500)); // Wait 500ms
 			addSequential(new TurnToAngle(-70)); // Rotate -90 degrees
 			addParallel(new PIDElevate(Dashboard.SwitchHeight, 5000)); // Bring elevator up to switch height
-			addParallel(new ForwardNSpit(-0.5)); // Drive forward, spit, back up
+			addParallel(new ForwardNSpit(-0.5, 750)); // Drive forward, spit, back up
 		} else if(Robot.gameData.charAt(0) == 'L') {
 			addSequential(new ResetWait(500)); // Wait 500ms
 			addSequential(new TrapDrive(200)); // Drive forward 200 inches
