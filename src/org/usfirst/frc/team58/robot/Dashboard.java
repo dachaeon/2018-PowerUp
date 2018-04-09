@@ -50,6 +50,7 @@ public class Dashboard {
 		// Make the default auto program Middle Switch. Might change to Cross Line. - Tyler 01/10/18
 		autoChooser.addDefault("Default Program: Cross Line", "Cross Line");
 		autoChooser.addObject("Middle Switch", "Middle Switch");
+		autoChooser.addObject("Middle Two Cube", "Middle Two Cube");
 		autoChooser.addObject("Right Side", "Right Side");
 		autoChooser.addObject("Left Side", "Left Side");
 		autoChooser.addObject("Right Side SCALE ONLY", "Scale From Right");
@@ -69,7 +70,9 @@ public class Dashboard {
 	
 	public static void autoBuild(String autoChoice) {
 		switch(autoChoice){
-			case "Middle Switch" : autoCommand = new Middle2Cube();
+			case "Middle Switch" : autoCommand = new MiddleFast(); // change to MiddleSwitch(); if fast is bad
+				break;
+			case "Middle Two Cube" : autoCommand = new Middle2Cube();
 				break;
 			case "Right Switch" : autoCommand = new RightSwitch();
 				break;
