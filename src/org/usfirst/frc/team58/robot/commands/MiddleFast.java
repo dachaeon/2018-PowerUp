@@ -11,7 +11,7 @@ public class MiddleFast extends CommandGroup {
 		System.out.println("RUNNING MIDDLE 2CUBE");
 		if (Robot.gameData != null) {
 		if(Robot.gameData.charAt(0) == 'R') {
-			System.out.println("Got the switch on the right");;
+			//System.out.println("Got the switch on the right");;
 			addSequential(new TrapDrive(10));
 			//addSequential(new ResetWait(250)); // Wait 1000ms 
 			addSequential(new PIDRotate(0.02,0,0.01, 42.0058));
@@ -25,7 +25,7 @@ public class MiddleFast extends CommandGroup {
 			
 			
 		} else if(Robot.gameData.charAt(0) == 'L') {
-			System.out.println("Got the switch on the left");
+			//System.out.println("Got the switch on the left");
 			addSequential(new TrapDrive(10));
 			//addSequential(new ResetWait(250)); // Wait 1000ms 
 			addSequential(new PIDRotate(0.02,0,0.01,-36.0058));

@@ -29,17 +29,17 @@ public class PIDElevate extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		System.out.println(Robot.m_Elevator.getEncoder());
+		// System.out.println(Robot.m_Elevator.getEncoder());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() { // Add code to determine if PID loop is finished
 		if (System.currentTimeMillis() >= startTime + timeout) {
-			System.out.println("elevation timed out");
+		//	System.out.println("elevation timed out");
 			return true;
 		} else {
-			System.out.println("still holding!");
+		//	System.out.println("still holding!");
 			return false;
 		}
 	}

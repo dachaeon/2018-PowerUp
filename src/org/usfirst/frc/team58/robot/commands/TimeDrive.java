@@ -31,7 +31,7 @@ public class TimeDrive extends Command {
 	@Override
 	protected boolean isFinished() {
 		if (System.currentTimeMillis() >= startTime + duration) {
-			System.out.println("Checkin' Time");
+			//System.out.println("Checkin' Time");
 			return true;
 		} else {
 			return false;

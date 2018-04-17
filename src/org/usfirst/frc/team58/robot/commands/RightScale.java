@@ -10,7 +10,7 @@ public class RightScale extends CommandGroup {
 		addSequential(new PIDdrive(221, 0.9));
 		addSequential(new ResetWait(250));
 		addSequential(new PIDRotate(0.03,0.006,0.07, -20));
-		addSequential(new GoToScale());
+		addSequential(new GoToScale(1400));
 		addSequential(new PIDElevate(0, 1500));
 		addSequential(new PIDRotate(0.03,0.006,0.07, -50));
 		addSequential(new ResetWait(250));

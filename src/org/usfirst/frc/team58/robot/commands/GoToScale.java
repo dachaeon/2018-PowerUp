@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitForChildren;
 
 public class GoToScale extends CommandGroup {
-	public GoToScale() {
+	public GoToScale(double time) {
 		addParallel(new PIDElevate(Dashboard.ScaleHeight, 3000));
-		addParallel(new ForwardNSpit(-0.47, 1400));
+		addParallel(new ForwardNSpit(-0.47, time));
 		//addParallel(new ForwardNSpit());
 	}
 }

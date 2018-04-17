@@ -71,7 +71,7 @@ public class PIDdrive extends Command {
 		// Set timeout to 15 sec
 		//setTimeout(15);
 		
-		System.out.println("PID drive constructed");
+		//System.out.println("PID drive constructed");
 		
 		//setInterruptible(false);
 		
@@ -104,7 +104,7 @@ public PIDdrive(double distance, double p, double i, double d) {
 		// Set timeout to 15 sec
 		//setTimeout(15);
 		
-		System.out.println("PID drive constructed");
+		//System.out.println("PID drive constructed");
 		
 		//setInterruptible(false);
 		
@@ -121,7 +121,7 @@ public PIDdrive(double distance, double p, double i, double d) {
 	
 	protected double returnPIDInput() {
 		double input = Robot.m_DriveTrain.getEncoders();
-		System.out.println("input = " +input);
+		//System.out.println("input = " +input);
 		return input;
 	}
 
@@ -130,7 +130,7 @@ public PIDdrive(double distance, double p, double i, double d) {
 		double angle = Robot.m_DriveTrain.getAngle();
 			angle = angle*0.1; // scale down angle to make it a small correction. Change scale factor as needed - Emma
 		
-		System.out.println("output = " + output + "angle = " + angle);
+		//System.out.println("output = " + output + "angle = " + angle);
 		// send to drive train
 		Robot.m_DriveTrain.drive(-output,-angle , true); // has to be negative output
 		
@@ -151,7 +151,7 @@ public PIDdrive(double distance, double p, double i, double d) {
 		
 		// this was initially Robot.m_DriveTrain.getEncoders() >= nu_dist
 		if (c.onTarget()) {
-			System.out.println("at setpoint");
+			//System.out.println("at setpoint");
 			return true; // if you go to the setpoint, stop
 		} 
 //		else if (isTimedOut()) {
@@ -159,7 +159,7 @@ public PIDdrive(double distance, double p, double i, double d) {
 //			return true; // will safely end command after 15 seconds. can make shorter up in constructor
 //		}
 		else {
-			System.out.println("not there yet");
+			//System.out.println("not there yet");
 			return false;
 		}
 	}

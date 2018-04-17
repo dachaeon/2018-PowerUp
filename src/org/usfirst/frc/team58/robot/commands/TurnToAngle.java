@@ -40,7 +40,7 @@ public class TurnToAngle extends Command {
 	@Override
 	protected void execute() {	
 		currentAngle = Robot.m_DriveTrain.getAngle();
-		System.out.println("Current Angle: " + currentAngle);
+		//System.out.println("Current Angle: " + currentAngle);
 		if((Math.abs(currentAngle) > (Math.abs(angle)-25)) && (Math.abs(currentAngle) < (Math.abs(angle)+25))) {
 			Robot.m_DriveTrain.drive(0, endSpeed, false);
 		} else if((Robot.m_DriveTrain.getAngle() > (-5)) && (Robot.m_DriveTrain.getAngle() < (5))) {

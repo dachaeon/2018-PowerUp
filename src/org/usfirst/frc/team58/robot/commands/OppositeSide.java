@@ -15,7 +15,7 @@ public class OppositeSide extends CommandGroup {
 			addSequential(new TrapDrive(188)); 
 			addSequential(new ResetWait(250));
 			addSequential(new TurnToAngle(65));
-			addSequential(new GoToScale());
+			addSequential(new GoToScale(1600));
 			addSequential(new PIDElevate(0, 1500));
 		} else if (Robot.gameData.charAt(1) == 'R') {
 			addSequential(new TrapDrive(210)); 
@@ -26,7 +26,7 @@ public class OppositeSide extends CommandGroup {
 			addSequential(new TrapDrive(193));  
 			addSequential(new ResetWait(250));
 			addSequential(new TurnToAngle(-70));
-			addSequential(new GoToScale());
+			addSequential(new GoToScale(1600));
 		}
 	}
 }

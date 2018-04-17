@@ -20,7 +20,7 @@ public class Wait extends Command {
 	
 	@Override
 	protected void execute() {
-		System.out.println("Waiting!");
+		//System.out.println("Waiting!");
 	}
 	
 	@Override

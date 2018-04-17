@@ -19,7 +19,7 @@ public class Dashboard {
 	// Preferences variables to be edited in the SmartDashboard. - Tyler 01/10/18
 	// public static double elevatorSpeed; 
 	public static double ScaleHeight = 44400;
-	public static double SwitchHeight = 16500;
+	public static double SwitchHeight = 17000;
 	public static double ExchangeHeight;
 	public static double RestHeight = 0;
 	public double rotate_kP;
@@ -70,7 +70,7 @@ public class Dashboard {
 	
 	public static void autoBuild(String autoChoice) {
 		switch(autoChoice){
-			case "Middle Switch" : autoCommand = new MiddleFast(); // change to MiddleSwitch(); if fast is bad
+			case "Middle Switch" : autoCommand = new MiddleSwitch(); // change to MiddleSwitch(); if fast is bad
 				break;
 			case "Middle Two Cube" : autoCommand = new Middle2Cube();
 				break;

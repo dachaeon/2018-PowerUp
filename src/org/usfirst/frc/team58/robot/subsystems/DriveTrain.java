@@ -109,10 +109,10 @@ public class DriveTrain extends Subsystem {
 	public double getEncoders() {
 		double left = m_FrontLeftMotor.getSelectedSensorPosition(0);
 		double right =  m_FrontRightMotor.getSelectedSensorPosition(0);
-		System.out.println("left=" + left);
-		System.out.println("right=" + right);
+		//System.out.println("left=" + left);
+		//System.out.println("right=" + right);
 		distanceTraveled = ((left+right/2)*4096)/(6*Math.PI);
-		System.out.println("Distance Traveled: " + distanceTraveled + " inches");
+		//System.out.println("Distance Traveled: " + distanceTraveled + " inches");
 		//return distance in native units (4096/rev)
 		if (Math.abs(left-right) < 1000 ) {
 			return ((left+right)/2);

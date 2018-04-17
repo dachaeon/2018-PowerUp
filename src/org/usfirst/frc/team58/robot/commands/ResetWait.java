@@ -33,7 +33,7 @@ public class ResetWait extends Command {
 		if (System.currentTimeMillis() >= startTime + duration) {
 			return true;
 		} else {
-			System.out.println("Waiting");
+			//System.out.println("Waiting");
 			return false;
 		}
 		

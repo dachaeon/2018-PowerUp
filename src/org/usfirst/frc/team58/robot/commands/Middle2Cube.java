@@ -11,7 +11,7 @@ public class Middle2Cube extends CommandGroup {
 		System.out.println("RUNNING MIDDLE 2CUBE");
 		if (Robot.gameData != null) {
 		if(Robot.gameData.charAt(0) == 'R') {
-			System.out.println("Got the switch on the right");
+			//System.out.println("Got the switch on the right");
 			/* addSequential(new PIDdrive(31, 0.6)); //36 to 31 at bridgewater 2:55PM 
 			addSequential(new ResetWait(250)); // Wait 1000ms
 			addSequential(new PIDRotate(0.02,0,0.01,50));
@@ -26,7 +26,7 @@ public class Middle2Cube extends CommandGroup {
 			//addSequential(new ForwardNGrab());
 			addSequential(new TrapDrive(10));
 			//addSequential(new ResetWait(250)); // Wait 1000ms 
-			addSequential(new PIDRotate(0.02,0,0.01, 42.0058));
+			addSequential(new PIDRotate(0.02,0,0.01, 30.5058));
 			addSequential(new ResetWait(158)); // Wait 1000ms
 			addSequential(new TrapDrive(62.58));
 			addSequential(new ResetWait(158));// Wait 1000ms 
@@ -47,10 +47,10 @@ public class Middle2Cube extends CommandGroup {
 			
 			
 		} else if(Robot.gameData.charAt(0) == 'L') {
-			System.out.println("Got the switch on the left");
+			//System.out.println("Got the switch on the left");
 			addSequential(new TrapDrive(10));
 			//addSequential(new ResetWait(250)); // Wait 1000ms 
-			addSequential(new PIDRotate(0.02,0,0.01,-36.0058));
+			addSequential(new PIDRotate(0.02,0,0.01,-40.0058));
 			addSequential(new ResetWait(158)); // Wait 1000ms
 			addSequential(new TrapDrive(62.58));
 			addSequential(new ResetWait(158));// Wait 1000ms 

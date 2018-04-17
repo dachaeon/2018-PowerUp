@@ -36,13 +36,13 @@ public class PIDRotate extends PIDCommand {
 	@Override
 	protected double returnPIDInput() {
 		double angle = Robot.m_DriveTrain.getAngle();
-		System.out.println(angle);
+		//System.out.println(angle);
 		return Robot.m_DriveTrain.getAngle();
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
-		System.out.println(output);
+		//System.out.println(output);
 		Robot.m_DriveTrain.drive(0, output, true);
 	}
 
@@ -50,13 +50,13 @@ public class PIDRotate extends PIDCommand {
 	protected boolean isFinished() {
 		// normally if (c.onTarget())
 		if (c.onTarget()) {
-			System.out.println("finished");
+			//System.out.println("finished");
 			return true;
 		} else if (System.currentTimeMillis() >= start + 500) {
 			return true;
 		}
 		else {
-			System.out.println("not there yet");
+			//System.out.println("not there yet");
 			return false;
 		}
 		
