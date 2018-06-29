@@ -166,6 +166,7 @@ public PIDdrive(double distance, double p, double i, double d) {
 	@Override
 	protected void end() {
 		System.out.println("THIS IS THE END");
+		System.out.println("End Encoder Value: " + Robot.m_DriveTrain.getEncoders());
 		c.disable();
 		//c.free();
 		Robot.m_DriveTrain.drive(0, 0, true);

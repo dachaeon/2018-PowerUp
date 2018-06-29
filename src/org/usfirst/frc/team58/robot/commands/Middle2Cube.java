@@ -34,16 +34,19 @@ public class Middle2Cube extends CommandGroup {
 			addSequential(new GoToSwitch());
 			addSequential(new PIDElevate(-800, 1000));
 			addSequential(new TimeDrive(450, 0.9));
-			addSequential(new PIDRotate(0.02,0,0.01, -55));
+			addSequential(new PIDRotate(0.02,0,0.01, -50.58));
 			addSequential(new ResetWait(158)); // 158ms
 			addSequential(new ForwardNGrab());
 			addSequential(new TimeDrive(300, 0.9));
 			//addSequential(new ResetWait(250));
-			addSequential(new PIDRotate(0.02,0,0.01, 65));
+			addSequential(new PIDRotate(0.02,0,0.01, 60));
 			addSequential(new ResetWait(158)); // 158ms
 			//addSequential(new TrapDrive(15));
 			// ADD ANOTHER SMALL DRIVE HERE
-			addSequential(new GoToSwitch());
+			
+			//NORMALLY
+			//addSequential(new GoToSwitch());
+			addSequential(new GoToSwitchSecond());
 			//addSequential(new SpitCube());
 			
 			
@@ -59,7 +62,7 @@ public class Middle2Cube extends CommandGroup {
 			addSequential(new GoToSwitch());
 			addSequential(new PIDElevate(-800, 1000));
 			addSequential(new TimeDrive(450, 0.9));
-			addSequential(new PIDRotate(0.02,0,0.01, 55));
+			addSequential(new PIDRotate(0.02,0,0.01, 55)); // could try 52
 			addSequential(new ResetWait(158)); // 158ms
 			addSequential(new ForwardNGrab());
 			addSequential(new TimeDrive(300, 0.9));
@@ -68,7 +71,10 @@ public class Middle2Cube extends CommandGroup {
 			addSequential(new ResetWait(158)); // 158ms
 			//addSequential(new TrapDrive(15));
 			// ADD ANOTHER SMALL DRIVE
-			addSequential(new GoToSwitch());
+			
+			//NORMALLY
+			//addSequential(new GoToSwitch());
+			addSequential(new GoToSwitchSecond());
 			//addSequential(new SpitCube());
 		}
 		}

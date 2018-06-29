@@ -73,6 +73,7 @@ public class TrapDrive extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		System.out.println("End Encoder Value: " + Robot.m_DriveTrain.getEncoders());
 		Robot.m_DriveTrain.drive(0, 0, false);
 	}
 

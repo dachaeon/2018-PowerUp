@@ -5,11 +5,9 @@ import org.usfirst.frc.team58.robot.Robot;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitForChildren;
 
-public class GoToScale extends CommandGroup {
-	public GoToScale(double time) {
-		addParallel(new PIDElevate(Dashboard.ScaleHeight, 3000));
-		addParallel(new ForwardNSpit(-0.47, time));
-		// addP
-		//addParallel(new ForwardNSpit());
+public class SpitNBackUp extends CommandGroup {
+	public SpitNBackUp() {
+		addParallel(new SpitCube());
+		addParallel(new TimeDrive(1000, 0.5));
 	}
 }

@@ -55,7 +55,7 @@ public class OI {
 	//public JoystickButton ExchangeHeight = new JoystickButton (operator, RobotMap.x);
 	//public JoystickButton RestHeight = new JoystickButton (operator, RobotMap.a);
 	public JoystickButton Climb = new JoystickButton (operator, RobotMap.y);
-	//public JoystickButton ReverseClimb = new JoystickButton (operator, RobotMap.a);
+	public JoystickButton ReverseClimb = new JoystickButton (operator, RobotMap.a);
 	public JoystickButton RearElevateUP = new JoystickButton (operator, RobotMap.rightBumper);
 	public JoystickButton RearElevateDOWN = new JoystickButton (operator, RobotMap.leftBumper);
 	public JoystickButton BrakeClimb = new JoystickButton(operator, RobotMap.b);
@@ -67,7 +67,7 @@ public class OI {
 		//ExchangeHeight.whenPressed(new PIDElevate(Dashboard.ExchangeHeight));
 		//RestHeight.whenPressed(new PIDElevate(Dashboard.RestHeight));
 		Climb.whileHeld(new Climb(1.0));
-		//ReverseClimb.whileHeld(new Climb(-0.5));
+		ReverseClimb.whileHeld(new Climb(-0.5));
 		BrakeClimb.whileHeld(new Climb(0.2));
 		RearElevateUP.whileHeld(new Lift(0.27));
 		RearElevateDOWN.whileHeld(new Lift(-0.2));

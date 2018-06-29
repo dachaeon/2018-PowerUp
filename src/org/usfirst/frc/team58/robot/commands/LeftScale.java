@@ -12,9 +12,9 @@ public class LeftScale extends CommandGroup {
 		addSequential(new PIDRotate(0.03,0.006,0.07, 20.058));
 		addSequential(new GoToScale(1400));
 		addSequential(new PIDElevate(-800, 2000));
-		addSequential(new ResetWait(250));
+		addSequential(new ResetWait(158));
 		addSequential(new TurnToAngle(95));
-		addSequential(new ResetWait(250));
+		addSequential(new ResetWait(158));
 		//addSequential(new PIDdrive(30.58, 0.75));
 		addSequential(new ForwardNGrab());
 		//addParallel(new ForwardNSpit()); */

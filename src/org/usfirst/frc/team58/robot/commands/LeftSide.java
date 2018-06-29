@@ -8,12 +8,16 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class LeftSide extends CommandGroup {
 	public LeftSide() {
-			if(Robot.gameData.charAt(1) == 'L') {
-				addSequential(new LeftScale()); //scale is top priority
+			if(Robot.gameData.charAt(0) == 'L') {
+				addSequential(new LeftSwitch()); //switch is top priority
+			} else if (Robot.gameData.charAt(1)== 'L') {
+				addSequential(new LeftScale()); //scale is second priority
+				
 			} else {
-				addSequential(new LeftSwitch()); //switch is second priority
-				}
-			}		
-}	
+				addSequential(new PIDdrive(125, 0.75));
+			}
+	}
+}
+	
 
 
